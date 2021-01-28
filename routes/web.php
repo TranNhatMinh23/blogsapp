@@ -4,6 +4,7 @@ use App\User;
 use App\Models\Profile;
 use App\Models\Categories;
 use App\Core\Helpers\SlugHelper;
+use App\Http\Middleware\CheckLogin;
 
 Route::get('/', 'HomeController@index')->name('home');
 
