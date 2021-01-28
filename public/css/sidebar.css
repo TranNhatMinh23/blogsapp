@@ -1,0 +1,56 @@
+aside article h1 {
+    font-size: 18px;
+    font-style: italic;
+}
+aside article .categories {
+    
+}
+aside article .categories a {
+    font-size: 13px;
+    background: #ddd;
+    margin-right: 5px;
+    padding: 3px 15px;
+    border-radius: 10px;
+    display: inline-block;
+    vertical-align: middle;
+    /* margin: -0.25em 0.25em 0em; */
+    background-color: #E8E8E8;
+    border-color: #E8E8E8;
+    padding: 0.5em 0.8em;
+    color: rgba(0,0,0,0.65);
+    text-transform: uppercase;
+    font-weight: normal;
+    border-radius: 0.325em;
+    margin-bottom: 13px;
+} 
+
+aside article {
+    /* border-bottom: 1px solid #ccc; */
+}
+aside article svg {
+    position: relative;
+    top: -3px;
+    width: 23px;
+    height: 20px;
+    /* background: blue; */
+    color: #efa068;
+}
+aside article .author {
+    display: flex;
+    margin-bottom: 13px;
+}
+aside article .author  .author-img{
+    width: 30px;
+    height: 30px;
+    display: block;
+    margin-right: 10px;
+}
+aside article .author  .author-img img{
+    width: 100%;
+    border-radius: 5px;
+    min-width: 30px;
+    min-height: 30px;
+}
+aside article .author  .author-name {
+    color: #5488c7;
+}

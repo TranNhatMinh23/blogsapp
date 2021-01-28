@@ -1,0 +1,111 @@
+@font-face {
+    
+}
+.logo {
+    font-family: BEYNO;
+}
+.main {
+    margin: 10px 0;
+}
+.background {
+    background: white;
+    padding: 15px;
+}
+a {
+    color: black;
+    text-decoration: none !important;
+}
+.blogs #blog-category {
+    font-size:29px
+}
+.blogs .blog {
+    margin-bottom: 10px;
+    border-radius: 3px;
+    padding: 5px 5px 16px 5px;
+    display: flex;
+    position: relative;
+    border-bottom: 1px solid rgba(0,0,0,.1);
+}
+.blogs .blog:last-child {
+    border-bottom: none;
+}
+.blogs .blog .blog-img {
+    width: 40px;
+    height: 40px;
+    display:block;
+    margin-right: 15px;
+}
+.blogs .blog .blog-img img {
+    width: 100%;
+    border-radius: 5px;
+    min-width: 40px;
+    min-height: 40px;
+    margin-top: 7px;
+}
+.blog .blog-title {
+    font-size: 18px;
+    margin: 0;
+    display: block;
+}
+.blog .blog-count-comment {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+}
+.blog .blog-other {
+    display: inline-flex;
+}
+.blog .blog-body {
+    padding-right: 30px;
+    line-height: 28px;
+}
+.blog .blog-body #timePost {
+    margin-bottom: 0;
+}
+.blog .author-delete-edit a {
+    margin-right: 5px;
+    font-size: 13px;
+}
+.blog .blog-other a {
+    color: #5488c7;
+    font-weight: bold;
+    margin-right: 5px;
+}
+.blog .blog-categories #blog-category {
+    font-size: 11px;
+    background: #ddd;
+    margin-right: 5px;
+    padding: 2px 11px;
+    border-radius: 10px
+}
+
+#delComment {
+    cursor: pointer;
+}
+
+.form-search {
+   position: relative; 
+   width: 300px;
+   margin: 0;
+}
+.form-search input {
+    width: 100% !important;
+    height: 25px !important;
+}
+.form-search input[type="text"]:focus {
+    border: 1px solid #ccc !important;
+    box-shadow: 0 0 0 0.2rem rgb(250 250 251 / 25%);
+}
+.form-search button {
+    background: transparent;
+    color: #ccc;
+    border: none !important;    
+    position: absolute;
+    right: -5px;
+    top: -6px;
+
+}
+.form-search button:hover {
+    color: #ccc !important;
+    background: transparent !important;
+}

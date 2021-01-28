@@ -1,0 +1,63 @@
+.profile {
+
+}
+.profile .profile-head {
+    display: flex;
+    justify-content: center;
+}
+.profile-head .profile-head-img {
+    width: 150px;
+    height: 150px;
+    margin-right: 40px;
+}
+.profile-head .profile-head-img img{
+    border-radius: 5px;
+    width: 100%;
+}
+.profile-head-info {
+}
+.profile-head-info .head-info-name {
+    display: flex;
+}
+.profile-head-info .head-info-name h1{
+    font-size: 28px;
+    color: #262626;
+    margin: 0;
+    margin-right: 15px;
+}
+.profile-head-info .head-info-name a{
+    border: 1px solid #262626;
+    height: 29px;
+    padding: 2px 7px;
+    border-radius: 6px;
+}
+.profile-head-info .profile-head-statistic {
+    margin: 15px 0;
+}
+.profile-head-info .profile-head-statistic span {
+    margin-right: 10px;
+}
+.profile-head-info .profile-head-social {
+    display: flex;
+}
+.profile-head-info .profile-head-social a{
+    color: white;
+    margin-right: 15px;
+    display: block;
+    font-size: 15px;
+    padding: 0px 10px;
+    border-radius: 7px;
+    max-width: 96px;
+    text-align: center;
+}
+.profile-head-info .profile-head-social #fb{
+    background: #385898;
+}
+.profile-head-info .profile-head-social #linked{
+    background: #0266A0;
+}
+
+
+.profile .profile-posts {
+    margin-top: 40px;
+}
