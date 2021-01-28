@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Core\Repositories\Category\ICategory;
+use App\Models\Categories;
+
 class CategoryController extends Controller
 {
     protected $categoryRepository;
@@ -20,12 +22,9 @@ class CategoryController extends Controller
         return view('pages.categories.category', ['posts' => $item->post, 'category' => $item]);
     }
     public function store(Request $request) {
-        $data = $request->all();
-        
-        // $item = $this->categoryRepository->create($data);
+        $item = $this->categoryRepository->create($request->all());
+        return $item;
     }
 
-    public function abc(Request $request) {
-        echo 'ok nha';
-    }
+
 }

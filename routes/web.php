@@ -24,6 +24,7 @@ Route::prefix('posts/')->group(function () {
 Route::get('/categories', 'CategoryController@index')->name('category.index');
 Route::get('/categories/{category}.html', 'CategoryController@show')->name('category.show');
 Route::post('/categories', 'CategoryController@store')->name('category.store');
+
 Route::post('/comment', 'PostController@storeComment')->name('comment.store');
 Route::post('/comment/{comment}', 'PostController@destroy')->name('comment.destroy');
 

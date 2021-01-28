@@ -112,7 +112,6 @@
                             location.reload();
                         }
                     },
-                    
                 })
                 
             }),
