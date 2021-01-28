@@ -12,7 +12,8 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::prefix('posts/')->group(function () {
     Route::get('/', 'PostController@index')->name('post.index');
     Route::get('/{slug}.html', 'PostController@show')->name('post.show');
-    Route::get('/new', 'PostController@create')->name('post.create')->middleware('checkLogin');
+    // Route::get('/new', 'PostController@create')->name('post.create')->middleware('checkLogin');
+    Route::get('/new', 'PostController@create')->name('post.create');
     Route::post('/', 'PostController@store')->name('post.store');
     Route::get('/update/{post}.html', 'PostController@edit')->name('post.edit');
     Route::post('/update/{post}', 'PostController@update')->name('post.update');
