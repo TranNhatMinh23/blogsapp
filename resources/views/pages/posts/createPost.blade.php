@@ -116,9 +116,7 @@
                     success: function(data) {
                         let obj = data;
                         let str = `
-                        <input type="checkbox" id="{{ $category->id }}" name="categorySelect[]" value="{{ $category->id }}">
-                        <label for="{{ $category->id }}">`+  data.name +`</label><br>
-                        `;
+                         `;
                         $(".categoriesform").append(str);
                     }
                 })
