@@ -20,6 +20,7 @@
                 @can('update', $post)
                 <a href="{{ route('post.edit', $post->slug) }}">Chỉnh sửa bài viết</a>
                 <a href="{{ route('post.destroy', $post->id) }}">Xóa bài viết</a>
+                <a href="{{ route('post.unpublish', $post->id) }}" class="publishbtn">Unpuslish</a>
                 @endcan
             </div>
             <!-- <div>{!! trim(substr($post->content, 0 , 150)) !!} ...</div> -->

@@ -1,7 +1,7 @@
 <?php
 use Illuminate\Support\Facades\Auth;
 use App\User;
-use App\Models\Profile;
+use App\Models\Post;
 use App\Models\Categories;
 use App\Core\Helpers\SlugHelper;
 use App\Http\Middleware\CheckLogin;
@@ -18,7 +18,12 @@ Route::prefix('posts/')->group(function () {
     Route::get('/update/{post}.html', 'PostController@edit')->name('post.edit');
     Route::post('/update/{post}', 'PostController@update')->name('post.update');
     Route::get('/delete/{post}.html', 'PostController@destroy')->name('post.destroy');
+    Route::get('/publish/{post}', 'PostController@publishPost')->name('post.publish');
+    Route::get('/unpublish/{post}', 'PostController@unpublishPost')->name('post.unpublish');
+    
 });
+
+
 
 
 Route::get('/categories', 'CategoryController@index')->name('category.index');
@@ -45,6 +50,6 @@ Auth::routes();
 
 
 Route::get('/test', function(){
-    $chuoi = 'tôi là nguyễn 725 3 4 5 8 -=.,k minh trọng';
-    echo slugify($chuoi);
+    $post = Post::Published()->get();
+    echo $post;
 });

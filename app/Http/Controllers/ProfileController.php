@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Models\Post;
 use App\Models\Profile;
 use Auth;
 use App\Core\Plugins\ResizeImage;
@@ -12,14 +13,16 @@ class ProfileController extends Controller
 {
     public function index($slug) {
         $user = User::where('slug', '=', $slug)->firstOrFail();
-        return view('pages.profile.profile',['user' => $user]);
-    }
-    public function store() {
+        $postsPublished = $user->posts->where('published', '=', '1');
+        $postsUnpublish = $user->posts->where('published', '=', '0');
         
+        return view('pages.profile.profile',[
+            'user' => $user,
+            'postsPublished' => $postsPublished,
+            'postsUnpublish' => $postsUnpublish,
+            ]);
     }
-    public function uploadfile($file) {
 
-    }
     public function edit($slug) {
         $user = User::where('slug', '=', $slug)->firstOrFail();
         $profile = $user->profile;
@@ -41,4 +44,6 @@ class ProfileController extends Controller
         // echo Auth::id();
         return redirect(route('profile.index', Auth::user()->slug));
     }
+
+    
 }

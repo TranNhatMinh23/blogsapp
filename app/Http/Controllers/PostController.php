@@ -69,6 +69,20 @@ class PostController extends Controller
         return redirect(route('home'));
     }
 
+    public function publishPost($id) {
+        $post = Post::find($id);
+        $post->published = 1;
+        $post->save();
+        return redirect(route('profile.index', Auth::user()->slug));
+    }
+
+    public function unpublishPost($id) {
+        $post = Post::find($id);
+        $post->published = 0;
+        $post->save();
+        return redirect(route('profile.index', Auth::user()->slug));
+    }
+
     public function comments() {
         $item = rsort($this->commentRepository->getAll());
         return $item;

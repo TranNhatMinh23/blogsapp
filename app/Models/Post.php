@@ -21,4 +21,15 @@ class Post extends Model
         return $this->hasMany('App\Models\Comment');
     }
 
+    public function scopePublished($query)
+    {
+        return $query->where('published', true);
+    }
+    public function scopeUnPublish($query)
+    {
+        return $query->where('published', false);
+    }
+
+
+
 }

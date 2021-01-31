@@ -61,3 +61,18 @@
 .profile .profile-posts {
     margin-top: 40px;
 }
+.profile .publishnow {
+    background: #d08b24;
+    outline: none;
+    padding: 0px 6px;
+    border-radius: 5px;
+    border: none;
+    color: white;
+}
+
+.profile .publishbtn {
+    background: #ccc;
+    padding: 2px 5px;
+    border-radius: 5px;
+    color: black;
+}
