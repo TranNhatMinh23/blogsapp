@@ -49,7 +49,7 @@ class PostController extends Controller
         $post = $this->postRepository->create($request->all());
         $categories = $request->categorySelect;
         $post->category()->attach($categories);
-        return redirect(route('home'));
+        return redirect(route('profile.index',Auth::user()->slug));
          
     }
     public function edit($slug) {
@@ -69,32 +69,26 @@ class PostController extends Controller
         return redirect(route('home'));
     }
 
-    public function publishPost($id) {
+    public function publishPost($id = null) {
         $post = Post::find($id);
         $post->published = 1;
         $post->save();
         return redirect(route('profile.index', Auth::user()->slug));
     }
 
-    public function unpublishPost($id) {
+    public function unpublishPost($id = null) {
         $post = Post::find($id);
         $post->published = 0;
         $post->save();
         return redirect(route('profile.index', Auth::user()->slug));
     }
 
-    public function comments() {
-        $item = rsort($this->commentRepository->getAll());
-        return $item;
-    }
-
     public function storeComment(StoreCommentRequest $request) {
         $validated = $request->validated();
         
         $data = $request->all();
-        $item = $this->commentRepository->create($data);
-        $comments = $this->commentRepository->getAll();
-        return redirect(route('post.show', $item->post_id));
+        $comment = $this->commentRepository->create($data);
+        return $comment;
     }
 
     public function updateComment($id, Request $request){
@@ -102,7 +96,8 @@ class PostController extends Controller
     }
 
     public function destroyComment($id) {
-        $item = $id;
         $this->commentRepository->delete($id);
+        $post = $this->commentRepository->find($id);
+        return redirect()->back();
     }
 }

@@ -29,7 +29,7 @@
             <!-- <div>{!! substr($post->content,0, 150) !!} ...</div> -->
             <div class="blog-other">
                 <a href="{{ route('profile.index', $post->user->slug ) }}">{{ $post->user->name }}</a>
-                <p id="timePost" alt="0">   đăng <span>{{ $post->created_at }}</span></p>
+                <p id="timePost" alt="0">   đăng <span class="timeAgo">{{ $post->created_at }}</span></p>
             </div>
         </div>
         <div class="blog-count-comment">
@@ -42,5 +42,6 @@
     </div>
     @endforeach
     @endif
+    
 </div>
 @endsection

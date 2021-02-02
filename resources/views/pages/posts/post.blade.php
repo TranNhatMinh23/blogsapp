@@ -49,35 +49,33 @@
                 
                 <div class="articleComment">
                     <div class="img-formComment">
-                    <img src="https://kenh14cdn.com/thumb_w/620/2020/10/19/photo-1-16030711718361859040497.jpg">
+                    <img src="{{ asset('/images/' . Auth::user()->profile->avarta ) }}">
                     </div>
                     <form id="formComment" action="{{ route('comment.store') }}" method="POST">
                         @csrf
-                        <input type="text" value="" placeholder="comment.." name="content" id="content">
+                        <input type="text" value="" placeholder="comment.." name="content" class="inputComment" id="content">
                         <!-- <input type="submit" value="Bình luận"> -->
                     </form>
                 </div>
-                
+                <div class="countComment">{{ count($comments)}} bình luận</div>
                 <div class="listComment">
-                    <div class="countComment">{{ count($comments)}} bình luận</div>
                     @foreach($comments as $comment)
                     <div class="comment">
                         <input type="hidden" value="{{ $comment->id}}"id="idComment">
                         <a href="#" class="commentimg">
-                        <img src="https://kenh14cdn.com/thumb_w/620/2020/10/19/photo-1-16030711718361859040497.jpg" alt="">
+                        <img src="{{ asset('/images/' . $comment->users->profile->avarta ) }}" alt="">
                         </a>
                         <div class="commentbody">
                             <div id="commentname">
                             <a href="#" id="name">{{ $comment->users->name }}</a>
                             @can('update', $comment)
-                            <a href="#" id="commentdel">Xóa comment</a>
+                            <a href="{{route('comment.destroy',$comment->id)}}" id="commentdel" data-id="{{ $comment->id }}">Xóa comment</a>
                             @endcan
                             </div>
                             <p id="commentcontent">{{ $comment->content }}</p>
                         </div>
                         
                         <div id="commenttime">30 phút trước</div>
-                        
                     </div>
                     @endforeach
                 </div>
@@ -87,53 +85,48 @@
         </div>
     </div>
     <script>
-        $(document).ready(function(){
-
-            $("#formComment").submit(function(e){
-                e.preventDefault();
-
-                let comment = $("#content").val();
-                let user = '{{ Auth::id() }}';
-                let post = '{{ $post->id }}';
-                let _token = $("input[name=_token]").val();
-
-                $.ajax({
-                    url: "{{ route('comment.store') }}",
-                    type: "POST",
-                    data: {
-                        content: comment,
-                        post_id: post,
-                        user_id: user,
-                        _token : _token
-                    },
-                    success: function(response)
-                    {
-                        if(response) {
-                            location.reload();
-                        }
-                    },
-                })
-                
-            }),
-
-            $("#btnDel").click(function(){
-                let url = $(this).attr('data-url');
-                let _token = $("input[name=_token]").val();
-                $.ajax({
-                    url: url,
-                    type: "POST",
-                    data: {
-                        _token : _token
-                    },
-                    success: function(response)
-                    {
+        $(document).on('submit', '#formComment', function(e) {
+            e.preventDefault();
+            let image = '{{ Auth::user()->profile->avarta }}';
+            let url_avarta = '{{ asset("/images/") }}'+ '/' + image;
+            let name = '{{ Auth::user()->name }}'
+            let comment = $("#content").val();
+            let user = '{{ Auth::id() }}';
+            let post = '{{ $post->id }}';
+            let _token = $("input[name=_token]").val();
+            $.ajax({
+                url: "{{ route('comment.store') }}",
+                type: "POST",
+                data: {
+                    content: comment,
+                    post_id: post,
+                    user_id: user,
+                    _token : _token
+                },
+                success: function(data)
+                {
+                    let str = `
+                    <div class="comment">
+                        <input type="hidden" value="`+ data.id +`"id="idComment">
+                        <a href="#" class="commentimg">
+                        <img src="`+ url_avarta +`" alt="">
+                        </a>
+                        <div class="commentbody">
+                            <div id="commentname">
+                            <a href="#" id="name">`+ name +`</a>
+                            <a href="" id="commentdel" data-id="`+ data.id +`">Xóa comment</a>
+                            </div>
+                            <p id="commentcontent">`+ data.content + `</p>
+                        </div>
                         
-                        location.reload();
-                    },
-                    
-                })
+                        <div id="commenttime">5 phút trước</div>
+                    </div>
+                    `;
+                    $(".listComment").prepend(str);
+                    $(".inputComment").val('');
+                },
             })
-        });
-        
+
+        })        
     </script>
 @endsection

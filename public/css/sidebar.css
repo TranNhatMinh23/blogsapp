@@ -48,8 +48,8 @@ aside article .author  .author-img{
 aside article .author  .author-img img{
     width: 100%;
     border-radius: 5px;
-    min-width: 30px;
-    min-height: 30px;
+    width: 30px;
+    height: 30px;
 }
 aside article .author  .author-name {
     color: #5488c7;

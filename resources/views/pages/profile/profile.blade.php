@@ -37,17 +37,19 @@
                 <div class="row">
                     <div class="col-md-2"></div> 
                     <div class="col-md-8">
-                        <div class="blogs">
+                    <div class="blogs">
                             <ul class="nav nav-tabs" id="myTab" role="tablist">
                                 <li class="nav-item" role="presentation">
-                                    <a class="nav-link active" id="published-tab" data-bs-toggle="tab" href="#published" role="tab" aria-controls="home" aria-selected="true">Bài viết đã đăng ({{ count($postsPublished) }})</a>
+                                    <a class="nav-link " id="published-tab" data-bs-toggle="tab" href="#published" role="tab" aria-controls="home" aria-selected="true">Bài viết đã đăng ({{ count($postsPublished) }})</a>
                                 </li>
+                                @if(Auth::id() === $user->id  )
                                 <li class="nav-item" role="presentation">
-                                    <a class="nav-link" id="unpublish-tab" data-bs-toggle="tab" href="#unpublish" role="tab" aria-controls="profile" aria-selected="false">Bài viết chưa đăng ({{ count($postsUnpublish) }})</a>
+                                    <a class="nav-link active" id="unpublish-tab" data-bs-toggle="tab" href="#unpublish" role="tab" aria-controls="profile" aria-selected="false">Bài viết chưa đăng ({{ count($postsUnpublish) }})</a>
                                 </li>
+                                @endif
                             </ul>
                             <div class="tab-content" id="myTabContent">
-                                <div class="tab-pane fade show active" id="published" role="tabpanel" aria-labelledby="published-tab">
+                                <div class="tab-pane fade show " id="published" role="tabpanel" aria-labelledby="published-tab">
                                     @foreach ($postsPublished as $post)
                                     <div class="blog">
                                         <a href="{{ route('profile.index', $post->user->slug) }}" class="blog-img"><img src="{{ asset('images/'. $post->user->profile->avarta) }}" alt=""></a>
@@ -82,7 +84,9 @@
                                     </div>
                                     @endforeach
                                 </div>
-                                <div class="tab-pane fade" id="unpublish" role="tabpanel" aria-labelledby="unpublish-tab">
+
+                                @if(Auth::id() === $user->id  )
+                                <div class="tab-pane fade show active" id="unpublish" role="tabpanel" aria-labelledby="unpublish-tab">
                                     @foreach ($postsUnpublish as $post)
                                     <div class="blog">
                                         <a href="{{ route('profile.index', $post->user->slug) }}" class="blog-img"><img src="{{ asset('images/'. $post->user->profile->avarta) }}" alt=""></a>
@@ -120,7 +124,6 @@
                                     @endforeach
                                 </div>
 
-                                {{-- modal publish --}}
                                 <div class="modal fade" id="exampleModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                     <div class="modal-content">
@@ -129,6 +132,7 @@
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
+                                            
                                             <a href="{{ route('post.publish', $post->id) }}" id="parameterPost">Publish now</a>
                                             <div class="setPublish">
                                                 <label>Publish theo thời gian</label>
@@ -142,6 +146,7 @@
                                     </div>
                                     </div>
                                 </div>
+                                @endif
                                 
                                 
                             </div>

@@ -73,7 +73,7 @@
         </div>
         </div>
 
-       <script>
+       <script type='text/javascript'>
         function TitleToSLug() {
             let title = $("#title-post");
             let slug = $("#slug-post");
@@ -91,38 +91,33 @@
                 slug.val(textSlug);
             })
         }
+        $(document).on('submit', '.form-category', function(e){
+            e.preventDefault();
+            let _token = $("input[name=_token]").val();
+            
+            $.ajax({
+                type : "POST",
+                cache: false,
+                url: "{{ route('category.store') }}",
+                data: {
+                    _token : _token,
+                    name: $("#name-category").val(),
+                    slug: $("#slug-category").val()
+                },
+                success: function(data) {
+                    let obj = data;
+                    let str = `
+                    <input type="checkbox" id="`+ data.id +`" name="categorySelect[]" value="`+ data.id +`">
+                    <label for="`+ data.id +`">`+  data.name +`</label><br>
+                    `;
+                    $(".categoriesform").append(str);
+                }
+            })
+
+        })
         $(document).ready(function() {            
             TitleToSLug();
             CategoryToSlug();
-
-            
-            
-
-            $(".form-category").submit(function(e){
-                e.preventDefault();
-                let _token = $("input[name=_token]").val();
-                
-                $.ajax({
-                    type : "POST",
-                    cache: false,
-                    url: "{{ route('category.store') }}",
-                    data: {
-                        _token : _token,
-                        name: $("#name-category").val(),
-                        slug: $("#slug-category").val()
-                    },
-                    success: function(data) {
-                        let obj = data;
-                        let str = `
-                        <input type="checkbox" id="" name="categorySelect[]" value="">
-                        <label for="">`+  data.name +`</label><br>
-                        `;
-                        $(".categoriesform").append(str);
-                    }
-                })
-
-                
-            })
         })
        </script>
     </div>

@@ -5,6 +5,7 @@ use App\Models\Post;
 use App\Models\Categories;
 use App\Core\Helpers\SlugHelper;
 use App\Http\Middleware\CheckLogin;
+use SebastianBergmann\Environment\Console;
 
 Route::get('/', 'HomeController@index')->name('home');
 
@@ -31,7 +32,7 @@ Route::get('/categories/{category}.html', 'CategoryController@show')->name('cate
 Route::post('/categories', 'CategoryController@store')->name('category.store');
 
 Route::post('/comment', 'PostController@storeComment')->name('comment.store');
-Route::post('/comment/{comment}', 'PostController@destroy')->name('comment.destroy');
+Route::get('/comment/{comment}', 'PostController@destroyComment')->name('comment.destroy');
 
 
 Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
@@ -50,6 +51,5 @@ Auth::routes();
 
 
 Route::get('/test', function(){
-    $post = Post::Published()->get();
-    echo $post;
+    
 });
