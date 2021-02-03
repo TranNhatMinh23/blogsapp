@@ -8,6 +8,7 @@
 .profile-head .profile-head-img {
     width: 150px;
     height: 150px;
+    overflow: hidden;
     margin-right: 40px;
 }
 .profile-head .profile-head-img img{

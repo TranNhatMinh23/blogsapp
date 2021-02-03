@@ -49,7 +49,17 @@ class PostController extends Controller
         $post = $this->postRepository->create($request->all());
         $categories = $request->categorySelect;
         $post->category()->attach($categories);
-        return redirect(route('profile.index',Auth::user()->slug));
+        return redirect(route('profile.index', Auth::user()->slug));
+         
+    }
+    public function storePublish(StorePostRequest $request) {
+
+        return $request;
+        // $validated = $request->validated();
+        // $post = $this->postRepository->create($request->all());
+        // $categories = $request->categorySelect;
+        // $post->category()->attach($categories);
+        // return redirect(route('profile.index', Auth::user()->slug));
          
     }
     public function edit($slug) {

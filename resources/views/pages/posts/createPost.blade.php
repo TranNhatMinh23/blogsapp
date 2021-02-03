@@ -42,7 +42,7 @@
                 <label for="exampleFormControlTextarea1">Nội dung</label>
                 <textarea name="content" class="form-control my-editor" ></textarea>
             </div>
-            <button type="submit" class="btn btn-primary">Đăng bài viết</button>
+            <button type="submit" class="btn btn-primary">Lưu bài viết</button>
         </form>
         
         

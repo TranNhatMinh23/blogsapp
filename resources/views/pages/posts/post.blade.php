@@ -54,6 +54,7 @@
                     <form id="formComment" action="{{ route('comment.store') }}" method="POST">
                         @csrf
                         <input type="text" value="" placeholder="comment.." name="content" class="inputComment" id="content">
+                        <input type="hidden" value="" id="auth-info" auth-name="{{ Auth::user()->name }}" auth-avarta = "{{ Auth::user()->profile->avarta }}" >
                         <!-- <input type="submit" value="Bình luận"> -->
                     </form>
                 </div>
@@ -62,12 +63,12 @@
                     @foreach($comments as $comment)
                     <div class="comment">
                         <input type="hidden" value="{{ $comment->id}}"id="idComment">
-                        <a href="#" class="commentimg">
+                        <a href="{{ route('profile.index', $comment->users->slug) }}" class="commentimg">
                         <img src="{{ asset('/images/' . $comment->users->profile->avarta ) }}" alt="">
                         </a>
                         <div class="commentbody">
                             <div id="commentname">
-                            <a href="#" id="name">{{ $comment->users->name }}</a>
+                            <a href="{{ route('profile.index', $comment->users->slug) }}" id="name">{{ $comment->users->name }}</a>
                             @can('update', $comment)
                             <a href="{{route('comment.destroy',$comment->id)}}" id="commentdel" data-id="{{ $comment->id }}">Xóa comment</a>
                             @endcan
@@ -87,9 +88,9 @@
     <script>
         $(document).on('submit', '#formComment', function(e) {
             e.preventDefault();
-            let image = '{{ Auth::user()->profile->avarta }}';
+            let image = $("#auth-info").attr('auth-avarta');
             let url_avarta = '{{ asset("/images/") }}'+ '/' + image;
-            let name = '{{ Auth::user()->name }}'
+            let name = $("#auth-info").attr('auth-name');
             let comment = $("#content").val();
             let user = '{{ Auth::id() }}';
             let post = '{{ $post->id }}';

@@ -1,0 +1,139 @@
+.name-user {
+
+}
+.header-mb-avarta {
+    width: 35px;
+    height: 35px;
+    border-radius: 5px;
+    display: none;
+}
+#space-10 {
+    margin: 0 10px;
+}
+.header-mb-logout {
+    display: none;
+    width: 33px;
+    height: 35px;
+    color: #ccc;
+}
+.header-mb-newblog {
+    display: none;
+    width: 25px;
+    height: 25px;
+    color: #ccc;
+    margin-top: 5px;
+}
+.header .navbar-search {
+    
+}
+.header .header-mb-search {
+    background: transparent;
+    border: 2px solid #ccc;
+    width: 29px;
+    height: 27px;
+    margin-top: 12px;
+    margin-right: 10px;
+    border-radius: 5px;
+    color: #ccc;
+    display: none;
+}
+@media only screen and (max-width: 1023px) {
+
+}
+
+/* mobile */
+@media only screen and (max-width: 739px){
+    .container {
+        padding-right: 5px;
+        padding-left: 5px;
+    }
+    .navbar-search {
+    }
+    .header .header-mb-avarta {
+        display: block;
+    }
+    .header .name-user {
+        display: none;
+    }
+    .header .header-mb-logout {
+        display: block;
+    }
+    .header .logout {
+        display: none;
+    }
+    .header .newblog {
+        display: none;
+    }
+    .header .header-mb-newblog {
+        display: block;;
+    }
+    .header {
+        flex-wrap: inherit !important;
+    }
+    .header-mb-search {
+        display: block;
+    }
+    .header .navbar-search {
+        display: none;
+    }
+    .header .header-mb-search {
+        display: block;
+    }
+    .navbar-nav {
+        flex-direction: row;
+    }
+    .navbar-nav .nav-item {
+        margin-left: 10px;
+    }
+    .layout-main {
+        order: 2;
+    }
+    .blog .blog-other, .blog .blog-count-comment, .author-feature {
+        display: none;
+    }
+    .profile .profile-head {
+        flex-direction: column;
+    }
+    .profile-head .profile-head-img {
+        margin: auto;
+    }
+    .profile-head-info .head-info-name {
+        justify-content: center;
+        flex-direction: column;
+    }
+    .profile-head-info .head-info-name h1 {
+        margin: 0;
+        text-align: center;
+    }
+    .profile-head-info .head-info-name a {
+        width: 88px;
+        margin: auto;
+        height: 26px;
+        padding: 0px 0;
+        text-align: center;
+        border: none;
+    }
+    .profile-head-info .profile-head-social {
+        justify-content: center;
+    }
+    .blogs .nav-link {
+        padding: 4px 15px;
+    }
+    .blogs .blog .blog-img {
+        margin-right: 5px;
+    }
+    .profile-head-info .profile-head-statistic {
+        display: flex;
+    }
+    .listComment .comment .commentbody #commentname #name {
+        display: block;
+    }
+    aside article .categories a {
+        font-size: 11px;
+    }
+    .navbar-laravel {
+        padding: 0 1rem;
+    }
+
+
+}

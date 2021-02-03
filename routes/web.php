@@ -16,6 +16,9 @@ Route::prefix('posts/')->group(function () {
     // Route::get('/new', 'PostController@create')->name('post.create')->middleware('checkLogin');
     Route::get('/new', 'PostController@create')->name('post.create');
     Route::post('/', 'PostController@store')->name('post.store');
+
+    Route::post('/published', 'PostController@storePublish')->name('post.store.publish');
+    
     Route::get('/update/{post}.html', 'PostController@edit')->name('post.edit');
     Route::post('/update/{post}', 'PostController@update')->name('post.update');
     Route::get('/delete/{post}.html', 'PostController@destroy')->name('post.destroy');
