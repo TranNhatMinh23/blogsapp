@@ -76,7 +76,7 @@ class PostController extends Controller
     }
     public function destroy($id) {
         $this->postRepository->delete($id);
-        return redirect(route('home'));
+        return redirect()->back();
     }
 
     public function publishPost($id = null) {

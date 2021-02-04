@@ -124,6 +124,7 @@
     }
     .profile-head-info .profile-head-statistic {
         display: flex;
+        justify-content: center;
     }
     .listComment .comment .commentbody #commentname #name {
         display: block;
