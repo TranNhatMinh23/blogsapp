@@ -7,6 +7,9 @@
 .detailPost .content #contentString {
     margin-top: 50px;
 }
+#contentString img {
+    width: 100% !important;
+}
 .detailPost  .detail-categories {
     margin: 1rem 0;
 }
