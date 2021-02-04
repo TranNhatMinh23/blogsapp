@@ -123,7 +123,6 @@
                                     
                                     @endforeach
                                 </div>
-
                                 <div class="modal fade" id="exampleModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                     <div class="modal-content">
@@ -133,7 +132,7 @@
                                         </div>
                                         <div class="modal-body">
                                             
-                                            <a href="{{ route('post.publish', $post->id) }}" id="parameterPost">Publish now</a>
+                                            <a href="" id="parameterPost">Publish now</a>
                                             <div class="setPublish">
                                                 <label>Publish theo thời gian</label>
                                                 <input type="datetime-local">

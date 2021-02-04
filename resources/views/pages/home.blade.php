@@ -3,7 +3,7 @@
 @section('title', 'Home')
 
 @section('content-master')
-<div class="blogs">
+<div class="blogs">                    
     @foreach ($posts as $post)
     <div class="blog">
         <a href="{{ route('profile.index', $post->user->slug) }}" class="blog-img">
@@ -23,10 +23,10 @@
                 <a href="{{ route('post.unpublish', $post->id) }}" class="publishbtn">Unpuslish</a>
                 @endcan
             </div>
-            <!-- <div>{!! trim(substr($post->content, 0 , 150)) !!} ...</div> -->
+            <!-- <div>{!! trim(substr($post->content, 0 , 150)) !!} </div> -->
             <div class="blog-other">
                 <a href="{{ route('profile.index', $post->user->slug )}}">{{ $post->user->name }}</a>
-                <p id="timePost" alt="0">   đăng <span class="timeAgo{{$post->id}}">{{ $post->created_at }}</span></p>
+                <p id="timePost" alt="0">   đăng <span class="timeAgo">3 giờ trước</span></p>
             </div>
         </div>
         <div class="blog-count-comment">
@@ -37,7 +37,6 @@
             </svg>
         </div>
     </div>
-    @endforeach
-    
+    @endforeach    
 </div>
 @endsection

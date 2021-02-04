@@ -88,7 +88,7 @@
     .layout-main {
         order: 2;
     }
-    .blog .blog-other, .blog .blog-count-comment, .author-feature {
+    .blog .blog-count-comment, .author-feature {
         display: none;
     }
     .profile .profile-head {
@@ -133,6 +133,13 @@
     }
     .navbar-laravel {
         padding: 0 1rem;
+    }
+    .blog-other a, .blog-other #timeost {
+        font-size: 11px;
+        margin: 0;
+    }
+    .blog .blog-body {
+        padding-right: 0;
     }
 
 
