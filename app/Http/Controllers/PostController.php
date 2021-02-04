@@ -33,6 +33,10 @@ class PostController extends Controller
     public function show($slug) {
         $post = $this->postRepository->findBySlug($slug);
         $comments = $post->comment->sortByDesc('id');
+
+        $post->view = $post->view + 1;
+        $post->save();
+
         return view('pages.posts.post', [
             'post' => $post,
             'comments' => $comments

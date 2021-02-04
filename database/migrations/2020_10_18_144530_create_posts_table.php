@@ -19,6 +19,7 @@ class CreatePostsTable extends Migration
             $table->string('slug');
             $table->boolean('published')->default(false);
             $table->text('content');
+            $table->string("view")->nullable()->default(0);
             $table->unsignedInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();

@@ -15,6 +15,7 @@ a {
     color: black;
     text-decoration: none !important;
 }
+
 .blogs #blog-category {
     font-size:29px
 }
@@ -28,6 +29,21 @@ a {
 }
 .blogs .blog:last-child {
     border-bottom: none;
+}
+.blogs .blog__view-count-edit {
+    display: flex;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+}
+.blog .blog__view-count-edit .count-comment {
+    margin-right: 10px;
+}
+.blog .blog__view-count-edit .count-view {
+    
+}
+.blog .blog__view-count-edit .count-view svg{
+    margin-bottom: 4px;
 }
 .blogs .blog .blog-img {
     width: 40px;
@@ -47,11 +63,7 @@ a {
     margin: 0;
     display: block;
 }
-.blog .blog-count-comment {
-    position: absolute;
-    right: 5px;
-    top: 5px;
-}
+
 .blog .blog-other {
     display: inline-flex;
 }
