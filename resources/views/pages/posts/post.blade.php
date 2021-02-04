@@ -34,7 +34,7 @@
             </div>
             
             @guest
-            Phải đăng nhập mới bình luận
+            Phải đăng nhập mới được bình luận
             @else
             <div class="comments">
                 @if ($errors->any())
