@@ -3,7 +3,10 @@
 @section('title', 'Home')
 
 @section('content-master')
-<div class="blogs">                    
+<div class="blogs">          
+    @if(count($posts) === 0)
+        Hiện không có bài viết nào
+    @else
     @foreach ($posts as $post)
     <div class="blog">
         <a href="{{ route('profile.index', $post->user->slug) }}" class="blog-img">
@@ -45,10 +48,9 @@
                 </div>
             </div>
         </div>
-        
-        
-        
     </div>
-    @endforeach    
+    @endforeach   
+    @endif
+     
 </div>
 @endsection
