@@ -17,7 +17,10 @@ class ProfileController extends Controller
         $this->profileRepository = $profileRepository;
     }
     public function index($slug) {
-        
+        $all = User::all();
+        $user = User::where('slug', '=', $slug)->firstOrFail();
+        $postsPublished = $user->posts->where('published', '=', '1');
+
         $postsPublished = $this->profileRepository->getPostPublished($slug);
         $postsUnpublish = $this->profileRepository->getPostUnPublished($slug);
         $user = $this->profileRepository->findUserBySlug($slug);

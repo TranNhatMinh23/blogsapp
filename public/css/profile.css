@@ -8,12 +8,18 @@
 .profile-head .profile-head-img {
     width: 150px;
     height: 150px;
-    overflow: hidden;
+    border: 1px solid #ccc;
+    border-radius: 100%;
+    box-shadow: 0px 0px 5px #ccc;
+    background: white;
+    padding: 3px;
+    position: relative;
     margin-right: 40px;
 }
 .profile-head .profile-head-img img{
-    border-radius: 5px;
+    border-radius: 100%;
     width: 100%;
+    
 }
 .profile-head-info {
 }
@@ -30,7 +36,7 @@
     border: 1px solid #262626;
     height: 29px;
     padding: 2px 7px;
-    border-radius: 6px;
+    border-radius: 3px;
 }
 .profile-head-info .profile-head-statistic {
     margin: 15px 0;
@@ -82,4 +88,115 @@
 }
 .profile .blogInProfile {
     box-shadow: none;
+}
+.profile-edit {
+    display: flex;
+    margin-top: 10px;
+}
+.profile-edit #save-edit-profile {
+    background: #1c3a3a;
+    color: #fff;
+    border: none;
+    padding: 6px 35px;
+    border-radius: 20px;
+}
+.profile-edit .edit-nav {
+    flex-direction: column;
+    min-width: 250px;
+    position: relative;
+    top: 30px;
+}
+.profile-edit .edit-nav li {
+    margin-bottom: 15px;
+    z-index: 111;
+}
+.profile-edit .edit-nav li a {
+    background: transparent !important;
+    z-index: 11;
+    color: #aaa;
+    border-radius: 0;
+}
+
+.profile-edit .tab-content {
+    border-left: 1px solid #ccc;
+    padding: 10px 30px;
+    position: relative;
+    left: -2px;
+    width: 100%;
+    background: white;
+}
+
+.profile-edit .tab-content .img-edit {
+    width: 150px;
+    height: 150px;
+    border: 1px solid #ccc;
+    border-radius: 100%;
+    box-shadow: 0px 0px 5px #ccc;
+    background: white;
+    padding: 3px;
+    position: relative;
+}
+.profile-edit .img-edit #inputFile {
+    cursor: pointer;
+    position: absolute;
+    right: 5px;
+    bottom: 10px;
+    background: #eee;
+    padding: 5px;
+    border-radius: 100%;
+}
+.profile-edit .tab-content #form-avarta {
+    opacity: 1;
+}
+
+.profile-edit .img-edit img{
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+
+}
+
+.profile-edit .edit-nav li .active{
+    background: white !important;
+    border: 1px solid #ccc;
+    border-right: 7px solid white;
+    z-index: 11;
+    color: black;
+}
+
+
+
+.profile-edit .group-input {
+    border: 1px solid #ccc;
+    display: flex;
+    max-width: 350px;
+    border-radius: 3px;
+    
+}
+
+.profile-edit .group-input #social-icon {
+    display: flex;
+    align-items: center;
+    /* background: #ccc; */
+    padding: 0 9px;
+    color: #aaa;
+}
+.profile-edit .group-input .social-fb {
+    color: #385898 !important;
+}
+.profile-edit .group-input .social-linkedin {
+    color: #0266A0 !important;
+}
+
+
+.profile-edit .group-input input[type="date"],
+.profile-edit .group-input input[type="text"],
+.profile-edit .group-input input[type="tel"] {
+    border: none;
+    width: 100%;
+    outline: none;
+    padding: 3px 9px;
+}
+input[type="date"]::-webkit-calendar-picker-indicator {
+    /* background: none; */
 }

@@ -51,7 +51,7 @@ class PostController extends Controller
         $post = $this->postRepository->create($request->all());
         $categories = $request->categorySelect;
         $post->category()->attach($categories);
-        return $post;
+        return response()->json($post);
     }
     public function storePublish(StorePostRequest $request) {
 

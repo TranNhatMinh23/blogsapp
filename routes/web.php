@@ -60,11 +60,6 @@ Auth::routes();
 
 
 Route::get('/test', function(){
-    Carbon::setLocale('vi'); 
-    $posts = Post::find(1);
-    $time = $posts->getPublishedAttribute();
-    $dt = $posts->created_at;
-    $now = Carbon::now();
-    // {{ $user->created_at->diffForHumans() }}
-    echo $time;
+    $post = Post::find(1);
+    return response()->json($post);
 });

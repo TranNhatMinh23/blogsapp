@@ -32,7 +32,7 @@ class Post extends Model
     {
         return $query->where('published', false);
     }
-    public function getPublishedAttribute(){
+    public function getCreated_atAttribute(){
         Carbon::setLocale('vi');
         // {{$post->created_at->diffForHumans()}}
         $time =  $this->attributes['created_at'];

@@ -16,6 +16,10 @@ class CreateProfilesTable extends Migration
         Schema::create('profiles', function (Blueprint $table) {
             $table->increments('id');
             $table->string('avarta');
+            $table->string('fbsocial')->nullable();
+            $table->string('linkedInSocial')->nullable();
+            $table->integer('phoneNumber')->nullable();
+            $table->date('birthday')->nullable();
             $table->unsignedInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
 
