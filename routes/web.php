@@ -4,7 +4,7 @@ use App\User;
 use App\Models\Post;
 use App\Models\Categories;
 use App\Core\Helpers\SlugHelper;
-use App\Http\Middleware\CheckLogin;
+// use App\Http\Middleware\CheckLogin;
 use SebastianBergmann\Environment\Console;
 use Carbon\Carbon;
 
@@ -15,7 +15,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::prefix('posts/')->group(function () {
     Route::get('/', 'PostController@index')->name('post.index');
     Route::get('/{slug}.html', 'PostController@show')->name('post.show');
-    Route::get('/new', 'PostController@create')->name('post.create')->middleware('checkLogin');
+    Route::get('/new', 'PostController@create')->name('post.create');
     Route::get('/new', 'PostController@create')->name('post.create');
     Route::post('/', 'PostController@store')->name('post.store');
 
@@ -27,8 +27,8 @@ Route::prefix('posts/')->group(function () {
     Route::get('/publish/{post}', 'PostController@publishPost')->name('post.publish');
     Route::get('/unpublish/{post}', 'PostController@unpublishPost')->name('post.unpublish');  
     
-    Route::get('/up-point/{post}', 'PostController@upPoint')->name('post.up.point')->middleware('checkLogin');
-    Route::get('/down-point/{post}', 'PostController@downPoint')->name('post.down.point')->middleware('checkLogin');
+    Route::get('/up-point/{post}', 'PostController@upPoint')->name('post.up.point');
+    Route::get('/down-point/{post}', 'PostController@downPoint')->name('post.down.point');
 
 });
 Route::get('/timepost/{post}', 'PostController@updateTimePost')->name('post.update.timepost');
