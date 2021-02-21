@@ -4,7 +4,6 @@ use App\User;
 use App\Models\Post;
 use App\Models\Categories;
 use App\Core\Helpers\SlugHelper;
-// use App\Http\Middleware\CheckLogin;
 use SebastianBergmann\Environment\Console;
 use Carbon\Carbon;
 
