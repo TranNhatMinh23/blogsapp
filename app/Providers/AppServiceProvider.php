@@ -44,8 +44,9 @@ class AppServiceProvider extends ServiceProvider
         // view()->share('categories', $categories);
     }
     public $bindings = [
-        // IComment::class => CommentImpl::class,
-        // ICategory::class => CategoryImpl::class,
-        // IPost::class => PostImpl::class,
+        IPost::class => PostImpl::class,
+        IComment::class => CommentImpl::class,
+        ICategory::class => CategoryImpl::class,
+        IProfile::class => ProfileImpl::class,
     ];
 }

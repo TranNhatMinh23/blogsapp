@@ -176,7 +176,7 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         // Core Service
-        App\Core\Providers\CoreServiceProvider::class,
+        // App\Core\Providers\CoreServiceProvider::class,
 
     ],
 

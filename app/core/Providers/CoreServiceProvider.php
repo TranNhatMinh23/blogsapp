@@ -35,9 +35,9 @@ class CoreServiceProvider extends ServiceProvider
     }
 
     public $bindings = [
-        IPost::class => PostImpl::class,
-        IComment::class => CommentImpl::class,
-        ICategory::class => CategoryImpl::class,
-        IProfile::class => ProfileImpl::class,
+        // IPost::class => PostImpl::class,
+        // IComment::class => CommentImpl::class,
+        // ICategory::class => CategoryImpl::class,
+        // IProfile::class => ProfileImpl::class,
     ];
 }
