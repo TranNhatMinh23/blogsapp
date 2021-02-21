@@ -9,6 +9,8 @@ use App\Core\Repositories\Comment\IComment;
 use App\Core\Repositories\Comment\CommentImpl;
 use App\Core\Repositories\Category\ICategory;
 use App\Core\Repositories\Category\CategoryImpl;
+use App\Core\Repositories\Profile\IProfile;
+use App\Core\Repositories\Profile\ProfileImpl;
 
 class CoreServiceProvider extends ServiceProvider
 {
@@ -36,5 +38,6 @@ class CoreServiceProvider extends ServiceProvider
         IPost::class => PostImpl::class,
         IComment::class => CommentImpl::class,
         ICategory::class => CategoryImpl::class,
+        IProfile::class => ProfileImpl::class,
     ];
 }

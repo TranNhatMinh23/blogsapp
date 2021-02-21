@@ -6,14 +6,16 @@ use App\Models\Categories;
 use App\Core\Helpers\SlugHelper;
 use App\Http\Middleware\CheckLogin;
 use SebastianBergmann\Environment\Console;
+use Carbon\Carbon;
 
 Route::get('/', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home');
 
 
 Route::prefix('posts/')->group(function () {
     Route::get('/', 'PostController@index')->name('post.index');
     Route::get('/{slug}.html', 'PostController@show')->name('post.show');
-    // Route::get('/new', 'PostController@create')->name('post.create')->middleware('checkLogin');
+    Route::get('/new', 'PostController@create')->name('post.create')->middleware('checkLogin');
     Route::get('/new', 'PostController@create')->name('post.create');
     Route::post('/', 'PostController@store')->name('post.store');
 
@@ -23,16 +25,20 @@ Route::prefix('posts/')->group(function () {
     Route::post('/update/{post}', 'PostController@update')->name('post.update');
     Route::get('/delete/{post}.html', 'PostController@destroy')->name('post.destroy');
     Route::get('/publish/{post}', 'PostController@publishPost')->name('post.publish');
-    Route::get('/unpublish/{post}', 'PostController@unpublishPost')->name('post.unpublish');
+    Route::get('/unpublish/{post}', 'PostController@unpublishPost')->name('post.unpublish');  
     
+    Route::get('/up-point/{post}', 'PostController@upPoint')->name('post.up.point')->middleware('checkLogin');
+    Route::get('/down-point/{post}', 'PostController@downPoint')->name('post.down.point')->middleware('checkLogin');
+
 });
+Route::get('/timepost/{post}', 'PostController@updateTimePost')->name('post.update.timepost');
 
 
 
 
-Route::get('/categories', 'CategoryController@index')->name('category.index');
-Route::get('/categories/{category}.html', 'CategoryController@show')->name('category.show');
-Route::post('/categories', 'CategoryController@store')->name('category.store');
+Route::get('/c', 'CategoryController@index')->name('category.index');
+Route::get('/c/{category}', 'CategoryController@show')->name('category.show');
+Route::post('/c', 'CategoryController@store')->name('category.store');
 
 Route::post('/comment', 'PostController@storeComment')->name('comment.store');
 Route::get('/comment/{comment}', 'PostController@destroyComment')->name('comment.destroy');
@@ -54,5 +60,11 @@ Auth::routes();
 
 
 Route::get('/test', function(){
-    
+    Carbon::setLocale('vi'); 
+    $posts = Post::find(1);
+    $time = $posts->getPublishedAttribute();
+    $dt = $posts->created_at;
+    $now = Carbon::now();
+    // {{ $user->created_at->diffForHumans() }}
+    echo $time;
 });

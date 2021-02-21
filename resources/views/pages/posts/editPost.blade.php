@@ -1,8 +1,8 @@
-@extends('layouts.master')
+@extends('layouts.app')
 
 @section('title', 'Edit bài viết')
 
-@section('content-master')
+@section('content')
     <div class="container">
         <form method="POST" action="{{ route('post.update', $post->id) }}">
         @csrf
@@ -23,7 +23,7 @@
 
             <div class="form-group">
                 <label for="exampleFormControlTextarea1">Nội dung</label>
-                <textarea name="content" class="form-control" id="exampleFormControlTextarea1" rows="3">{{ $post->content }}</textarea>
+                <textarea name="content" class="form-control my-editor" >{{ $post->content }}</textarea>
             </div>
             <button type="submit" class="btn btn-primary">Cập nhật</button>
         </form>

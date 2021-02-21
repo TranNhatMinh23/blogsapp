@@ -26,10 +26,10 @@
                 <a href="{{ route('post.unpublish', $post->id) }}" class="publishbtn">Unpuslish</a>
                 @endcan
             </div>
-            <!-- <div>{!! trim(substr($post->content, 0 , 150)) !!} </div> -->
+            <div id="content-short">{!! trim(substr($post->content, 0 , 150)) !!}... </div>
             <div class="blog-other">
-                <a href="{{ route('profile.index', $post->user->slug )}}">{{ $post->user->name }}</a>
-                <p id="timePost" alt="0">   đăng <span class="timeAgo">3 giờ trước</span></p>
+            
+                <a href="{{ route('profile.index', $post->user->slug )}}">  {{ $post->user->name }} </a> đăng {{ $post->getPublishedAttribute() }}
                 <div class="blog__view-count-edit">
                     <div class="count-comment">
                         {{ count($post->comment) }}
@@ -45,12 +45,37 @@
                         <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/>
                         </svg>
                     </div>
+                    <div class="point">
+                        {{ $post->point }}
+                        <div class="point-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-up-fill" viewBox="0 0 16 16">
+                        <path d="M7.247 4.86l-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 0 0 .753-1.659l-4.796-5.48a1 1 0 0 0-1.506 0z"/>
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
+                        <path d="M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+                        </svg>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+        <script>
+            function replaceString(str) {
+                var from = ['hour ago'];
+                var to   = ['cách một giờ'];
+                for (var i=0, l=from.length ; i<l ; i++) {
+                    str = str.replace(from[i], to[i]);
+                }
+            return str;
+            }
+            console.log(replaceString('7 hours ago'))
+        </script>
     </div>
     @endforeach   
     @endif
-     
+    
+
+
+    
 </div>
 @endsection

@@ -47,14 +47,11 @@ class PostController extends Controller
         return view('pages.posts.createPost', ['category' => $category]);
     }
 
-    public function store(StorePostRequest $request) {
-
-        $validated = $request->validated();
+    public function store(Request $request) {
         $post = $this->postRepository->create($request->all());
         $categories = $request->categorySelect;
         $post->category()->attach($categories);
-        return redirect(route('profile.index', Auth::user()->slug));
-         
+        return $post;
     }
     public function storePublish(StorePostRequest $request) {
 
@@ -84,17 +81,20 @@ class PostController extends Controller
     }
 
     public function publishPost($id = null) {
-        $post = Post::find($id);
-        $post->published = 1;
-        $post->save();
+        $this->postRepository->publish($id);
         return redirect(route('profile.index', Auth::user()->slug));
     }
 
     public function unpublishPost($id = null) {
-        $post = Post::find($id);
-        $post->published = 0;
-        $post->save();
+       $this->postRepository->unPublish($id);
         return redirect(route('profile.index', Auth::user()->slug));
+    }
+
+    public function updateTimePost($id, Request $request) {
+        $post = Post::find($id);
+        $post->timePost = $request->timePost;
+        $post->save();
+        return $post;
     }
 
     public function storeComment(StoreCommentRequest $request) {
@@ -113,5 +113,15 @@ class PostController extends Controller
         $this->commentRepository->delete($id);
         $post = $this->commentRepository->find($id);
         return redirect()->back();
+    }
+
+    public function upPoint($id) {
+        $post = $this->postRepository->upPoint($id);
+        return $post;
+    }
+    public function downPoint($id) {
+        $post = $this->postRepository->downPoint($id);
+        if ($post < 0) {$post = 0;}
+        return $post;
     }
 }

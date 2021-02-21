@@ -4,6 +4,7 @@ namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use App\Models\Comment;
 
 class Kernel extends ConsoleKernel
 {
@@ -13,7 +14,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        'App\Console\Commands\PostByTime'
+        // 'App\Console\Commands\postTime'
     ];
 
     /**
@@ -24,7 +25,14 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('post:time')->everyMinute();
+        $schedule->call(function () {
+            $comment = new Comment();
+            $comment->content = '123456789';
+            $comment->post_id = 1;
+            $comment->user_id = 1;
+            $comment->save();
+        })->everyMinute();
+
     }
 
     /**

@@ -3,7 +3,7 @@ function slugfnc(str) {
     str = str.toLowerCase();
 
     var from = "ãàáảạăắẵặâấẫẩậẽèéẻẹêềếễểệìíỉĩịõòóỏọôổốỗồộơờớởỡợùúủũụưừứửữự·/_,:;";
-    var to   = "aaaaaaaaaaaaaaeeeeeeeeeeeeiiiiooooooooooooooooouuuuuuuuuữu------";
+    var to   = "aaaaaaaaaaaaaaeeeeeeeeeeeiiiiiooooooooooooooooouuuuuuuuuữu------";
     for (var i=0, l=from.length ; i<l ; i++) {
         str = str.replace(new RegExp(from.charAt(i), 'g'), to.charAt(i));
     }

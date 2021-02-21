@@ -51,7 +51,7 @@
                             <div class="tab-content" id="myTabContent">
                                 <div class="tab-pane fade show active" id="published" role="tabpanel" aria-labelledby="published-tab">
                                     @foreach ($postsPublished as $post)
-                                    <div class="blog">
+                                    <div class="blog blogInProfile">
                                         <a href="{{ route('profile.index', $post->user->slug) }}" class="blog-img"><img src="{{ asset('images/'. $post->user->profile->avarta) }}" alt=""></a>
                                         <div class="blog-body">
                                             <a href="{{ route('post.show',$post->slug) }}" class="blog-title">{{ $post->title }}</a>
@@ -88,7 +88,7 @@
                                 @if(Auth::id() === $user->id  )
                                 <div class="tab-pane fade show " id="unpublish" role="tabpanel" aria-labelledby="unpublish-tab">
                                     @foreach ($postsUnpublish as $post)
-                                    <div class="blog">
+                                    <div class="blog blogInProfile">
                                         <a href="{{ route('profile.index', $post->user->slug) }}" class="blog-img"><img src="{{ asset('images/'. $post->user->profile->avarta) }}" alt=""></a>
                                         <div class="blog-body">
                                             <a href="{{ route('post.show',$post->slug) }}" class="blog-title">{{ $post->title }}</a>
@@ -134,8 +134,12 @@
                                             
                                             <a href="" id="parameterPost">Publish now</a>
                                             <div class="setPublish">
-                                                <label>Publish theo thời gian</label>
-                                                <input type="datetime-local">
+                                                <form action="{{ route('post.update.timepost', 1) }}" method="get" data-id="" class="posttime">
+                                                    @csrf
+                                                    <label>Publish theo thời gian</label>
+                                                    <input type="datetime-local" name="timePost">
+                                                    <input type="submit" value="Lưu">
+                                                </form>
                                             </div>
                                         </div>
                                         <div class="modal-footer">
@@ -159,9 +163,14 @@
             $(document).ready(function(){
                 $(".publishnow").click(function(){
                     let id = $(this).attr('data-post');
+
                     let route = "{{ route('post.publish',3) }}";
                     let url = route.replace('3',id);
                     $('#parameterPost').attr('href',url);
+
+                    let route_time = "{{ route('post.update.timepost', 1) }}";
+                    let url_time = route_time.replace('1', id);
+                    $(".posttime").attr('action', url_time);
                 })
             })
         </script>

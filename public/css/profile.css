@@ -62,6 +62,9 @@
 .profile .profile-posts {
     margin-top: 40px;
 }
+.profile-posts .active {
+    background: white !important;
+}
 .profile .publishnow {
     background: #d08b24;
     outline: none;
@@ -76,4 +79,7 @@
     padding: 2px 5px;
     border-radius: 5px;
     color: black;
+}
+.profile .blogInProfile {
+    box-shadow: none;
 }

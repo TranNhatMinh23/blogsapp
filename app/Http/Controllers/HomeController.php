@@ -15,6 +15,7 @@ class HomeController extends Controller
 
     public function index()
     {
+        
         $posts = $this->postRepository->getPublished()->sortByDesc('id');
         return view('pages.home', ['posts' => $posts]);
     }

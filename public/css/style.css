@@ -1,28 +1,73 @@
-@font-face {
-    
+body {
+    background: #FDFDFD;
 }
-.logo {
-    font-family: BEYNO;
+.sticky-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 11;
 }
+
+
 .main {
     margin: 10px 0;
 }
 .background {
-    background: white;
-    padding: 15px;
+    /* background: white; */
+    padding: 0px !important;
 }
 a {
     color: black;
     text-decoration: none !important;
+}
+#content-short h1, h2 ,h3, h4, h5,h6, p, span {
+    font-size: 15px ;
+}
+#content-short p {
+    margin: 0;
+}
+.navbar-laravel {
+    background: #1c3a3a;
+}
+.navbar-laravel .nav-item a span{
+    color: white;
+}
+.navbar-laravel .nav-item .nav-link {
+    color: white !important;
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+}
+.navbar-laravel .nav-item .nav-link .header-mb-newblog {
+    
+    
+}
+.navbar-laravel .nav-item .nav-link .header-mb-logout, .navbar-laravel .nav-item .nav-link .header-mb-newblog {
+    width: 16px;
+    height: 16px;
+    color: #ccc;
+    margin-top: 0;
+    margin-right: 5px;
+}
+
+.navbar-laravel .logo {
+    font-family: BEYNO;
+    color: white !important;
+}
+.layout-sidebar hr {
+    height: 0.5px;
 }
 
 .blogs #blog-category {
     font-size:29px
 }
 .blogs .blog {
-    margin-bottom: 10px;
+    background: white;
+    /* box-shadow: 0px 0px 5px #ccc; */
+    /* margin-bottom: 10px; */
     border-radius: 3px;
-    padding: 5px 5px 16px 5px;
+    padding: 10px;
     display: flex;
     position: relative;
     border-bottom: 1px solid rgba(0,0,0,.1);
@@ -33,8 +78,8 @@ a {
 .blogs .blog__view-count-edit {
     display: flex;
     position: absolute;
-    right: 5px;
-    top: 5px;
+    right: 10px;
+    top: 10px;
 }
 .blog .blog__view-count-edit .count-comment {
     margin-right: 10px;
@@ -53,7 +98,7 @@ a {
 }
 .blogs .blog .blog-img img {
     width: 100%;
-    border-radius: 5px;
+    border-radius: 100%;
     width: 40px;
     height: 40px;
     margin-top: 7px;
@@ -62,10 +107,13 @@ a {
     font-size: 18px;
     margin: 0;
     display: block;
+    padding-right: 69px;
+
 }
 
 .blog .blog-other {
     display: inline-flex;
+    font-size: 13px;
 }
 .blog .blog-body {
     padding-right: 30px;
@@ -80,7 +128,7 @@ a {
 }
 .blog .blog-other a {
     color: #5488c7;
-    font-weight: bold;
+    /* font-weight: bold; */
     margin-right: 5px;
 }
 .blog .blog-categories #blog-category {
@@ -120,4 +168,31 @@ a {
 .form-search button:hover {
     color: #ccc !important;
     background: transparent !important;
+}
+.add-category {
+    background: transparent;
+    border: 2px solid black;
+    border-radius: 3px;
+    outline: none;
+    color: black;
+}
+.add-category:focus {
+    border: none !important;
+}
+.point {
+    display: flex;
+    margin-left: 10px;
+}
+.point .point-icon {
+    display: flex;
+    flex-direction: column;
+}
+
+.point .point-icon .bi-caret-up-fill {
+    position: relative;
+    top: 1px;
+}
+.point .point-icon .bi-caret-down-fill {
+    position: relative;
+    top: -4px;
 }

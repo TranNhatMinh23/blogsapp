@@ -1,8 +1,8 @@
-@extends('layouts.master')
+@extends('layouts.app')
 
 @section('title', 'Viết bài')
 
-@section('content-master')
+@section('content')
     <div class="container">     
 
         @if ($errors->any())
@@ -16,7 +16,7 @@
         @endif
         
         
-        <form method="POST" action="{{ route('post.store') }}">
+        <form id="form-add-post" method="POST" action="{{ route('post.store') }}">
         @csrf
             <div class="form-group">
                 <label for="">Tiêu đề bài viết</label>
@@ -29,11 +29,11 @@
                 <br>
                 <div class="categoriesform">
                 @foreach($category as $category )
-                <input type="checkbox" id="{{ $category->id }}" name="categorySelect[]" value="{{ $category->id }}">
+                <input type="checkbox" class="select-category"  id="{{ $category->id }}" name="categorySelect[]" value="{{ $category->id }}">
                 <label for="{{ $category->id }}"> {{ $category->name }}</label><br>
                 @endforeach
                 </div>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                <button type="button" class="add-category" data-toggle="modal" data-target="#exampleModal">
                     Thêm chủ đề
                 </button>
 
@@ -42,7 +42,8 @@
                 <label for="exampleFormControlTextarea1">Nội dung</label>
                 <textarea name="content" class="form-control my-editor" ></textarea>
             </div>
-            <button type="submit" class="btn btn-primary">Lưu bài viết</button>
+            <button type="submit" class="btn btn-primary" id="savePost">Lưu bài viết</button>
+            <button type="submit" class="btn btn-primary" id="publishPost">Đăng bài viết</button>
         </form>
         
         
@@ -51,7 +52,7 @@
             <form action="{{ route('category.store') }}" class="form-category"  method="POST">
                 <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Thêm chủ đề</h5>
+                    <h5 class="modal-title " id="exampleModalLabel">Thêm chủ đề</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                     </button>
@@ -91,6 +92,46 @@
                 slug.val(textSlug);
             })
         }
+
+        function ajaxPost($isPost) {
+            
+            let arrCategory = [];
+            tinyMCE.triggerSave();
+            $('input[type=checkbox]:checked').map(function(_, el) {
+                arrCategory.push($(el).val());
+            }).get();
+            let _token = $("input[name=_token]").val();
+            let title = $("#title-post").val();
+            let slug = $("#slug-post").val();
+            let content = $(".my-editor").val();
+            $.ajax({
+                type : "POST",
+                url: "{{ route('post.store') }}",
+                data: {
+                    _token : _token,
+                    title: title,
+                    slug: slug,
+                    published: $isPost,
+                    content: content,
+                    user_id: '{{ Auth::id() }}',
+                    categorySelect: arrCategory,
+                },
+                success: function(data) {
+                    console.log(data);
+                }
+            })
+        }
+
+        $(document).on('click', '#savePost', function (e){
+            e.preventDefault();
+            $isPost = 0;
+            ajaxPost($isPost);
+        })
+        $(document).on('click', '#publishPost', function (e){
+            e.preventDefault();
+            $isPost = 1;
+            ajaxPost($isPost);
+        })
         $(document).on('submit', '.form-category', function(e){
             e.preventDefault();
             let _token = $("input[name=_token]").val();

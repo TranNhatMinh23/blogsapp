@@ -26,7 +26,7 @@
     <script src="{{ asset('js/popper.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('js/jquery-3.5.1.min.js') }}" ></script>
-    
+        
     <script src="{{ asset('js/moment.min.js') }}"></script>
     <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
         
@@ -36,6 +36,7 @@
 </head>
 <body>
     <div id="app">
+        
         @include('partials.header')
         <main class="py-4">
             <div class="container background">
