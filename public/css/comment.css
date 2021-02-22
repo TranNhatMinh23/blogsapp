@@ -1,0 +1,87 @@
+.comments {
+    /* border-top: 1px solid #ccc; */
+    margin-top: 40px;
+    padding: 20px 0;
+}
+.comments .articleComment {
+    display: flex;
+}
+.articleComment .img-formComment{
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
+.articleComment .img-formComment img {
+    width: 100%;
+    border-radius: 5px;
+    width: 30px;
+    height: 30px;
+}
+.articleComment #formComment {
+    width: 100%;
+    text-align: right;
+    margin-bottom: 20px;
+}
+.articleComment #formComment input[type="text"] {
+    width: 100%;
+    /* border-radius: 4px; */
+    border: none;
+    border-bottom: 1px solid black;
+    padding: 3px 11px;
+    margin-bottom: 5px;
+}
+.articleComment #formComment input[type="text"]:focus {
+    border: none ;
+    border-bottom: 1px solid black !important;
+}
+.articleComment #formComment input[type="submit"] {
+    border: none;
+    border-radius: 5px;
+    background: #1c3a3a;
+    color: white;
+}
+
+.listComment {
+
+}
+.listComment .countComment {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+.listComment .comment {
+    display: flex;
+    border-bottom: 1px solid #ccc;
+    position: relative;
+    margin-bottom: 20px; 
+}
+.listComment .comment .commentimg {
+    display: block;
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+.listComment .comment .commentimg img {
+    width: 100%;
+    border-radius: 5px;
+    width: 40px;
+    height: 40px;
+}
+.listComment .comment .commentbody {
+    width: 100%;
+}
+.listComment .comment .commentbody #commentname {
+    font-weight: bold;
+    display: block;
+}
+.listComment .comment .commentbody #commentname #name {
+    color: #5488c7;
+    margin-right: 15px;
+}
+.listComment .comment .commentbody #commentname #commentdel {
+    font-weight: normal;
+}
+.listComment .comment #commenttime {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
