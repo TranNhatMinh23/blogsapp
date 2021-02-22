@@ -26,7 +26,7 @@
                 <a href="{{ route('post.unpublish', $post->id) }}" class="publishbtn">Unpuslish</a>
                 @endcan
             </div>
-            <div id="content-short">{!! trim(substr($post->content, 0 , 150)) !!}... </div>
+            <!-- <div id="content-short">{!! trim(substr($post->content, 0 , 150)) !!}... </div> -->
             <div class="blog-other">
             
                 <a href="{{ route('profile.index', $post->user->slug )}}">  {{ $post->user->name }} </a> đăng {{ $post->getCreated_atAttribute()}}
