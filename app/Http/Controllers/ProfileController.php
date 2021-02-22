@@ -17,7 +17,7 @@ class ProfileController extends Controller
         $this->profileRepository = $profileRepository;
     }
     public function index($slug) {
-        $all = User::all();
+        
         $user = User::where('slug', '=', $slug)->firstOrFail();
         $postsPublished = $user->posts->where('published', '=', '1');
 
@@ -39,7 +39,9 @@ class ProfileController extends Controller
 
     public function update($id, Request $request) {
         $this->profileRepository->moveFile($request);
-        $this->profileRepository->saveFile($id);
+        // $this->profileRepository->saveFile($id);
+        $request->avarta = 'avarta_default.png';
+        $this->profileRepository->update($id, $request->all());
         return redirect(route('profile.index', Auth::user()->slug));
     }
 

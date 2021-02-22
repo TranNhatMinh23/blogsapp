@@ -6,6 +6,7 @@ use App\Models\Categories;
 use App\Core\Helpers\SlugHelper;
 use SebastianBergmann\Environment\Console;
 use Carbon\Carbon;
+use GuzzleHttp\Psr7\Request;
 
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/home', 'HomeController@index')->name('home');
@@ -49,16 +50,14 @@ Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']
 
 
 Route::group(['prefix' => 'profile' ,'middleware' => ['auth']], function () {
+    Route::get('/{profile}', 'ProfileController@index')->name('profile.index');
     Route::get('/update/{profile}', 'ProfileController@edit')->name('profile.edit');
     Route::post('/update/{profile}', 'ProfileController@update')->name('profile.update');
-    Route::get('/{profile}', 'ProfileController@index')->name('profile.index');
 });
+
 
 
 Auth::routes();
 
 
-Route::get('/test', function(){
-    $post = Post::find(1);
-    return response()->json($post);
-});
+// Route::get('/test', 'ProfileController@test')->name('test');

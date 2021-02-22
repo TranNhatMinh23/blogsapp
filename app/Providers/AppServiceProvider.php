@@ -13,6 +13,8 @@ use App\Core\Repositories\Comment\IComment;
 use App\Core\Repositories\Comment\CommentImpl;
 use App\Core\Repositories\Category\ICategory;
 use App\Core\Repositories\Category\CategoryImpl;
+use App\Core\Repositories\Profile\IProfile;
+use App\Core\Repositories\Profile\ProfileImpl;
 
 class AppServiceProvider extends ServiceProvider
 {
