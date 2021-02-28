@@ -117,7 +117,6 @@
                     categorySelect: arrCategory,
                 },
                 success: function(data) {
-                    console.log(data);
                 }
             })
         }
@@ -125,12 +124,17 @@
         $(document).on('click', '#savePost', function (e){
             e.preventDefault();
             $isPost = 0;
-            ajaxPost($isPost);
+            console.log(ajaxPost($isPost));
+            if(ajaxPost($isPost)) {
+                alert("Đã lưu bài viết");
+            };
         })
         $(document).on('click', '#publishPost', function (e){
             e.preventDefault();
             $isPost = 1;
-            ajaxPost($isPost);
+            if(ajaxPost($isPost)) {
+                alert("Đã đăng bài viết");
+            };
         })
         $(document).on('submit', '.form-category', function(e){
             e.preventDefault();

@@ -14,6 +14,7 @@ use Gate;
 use App\User;
 use App\Models\Post;
 use App\Models\Comment;
+use App\Models\Profile;
 
 class PostController extends Controller
 {
@@ -51,7 +52,7 @@ class PostController extends Controller
         $post = $this->postRepository->create($request->all());
         $categories = $request->categorySelect;
         $post->category()->attach($categories);
-        return response()->json($post);
+        return true;
     }
     public function storePublish(StorePostRequest $request) {
 
@@ -66,6 +67,7 @@ class PostController extends Controller
     public function edit($slug) {
         $post = $this->postRepository->findBySlug($slug);
         $categories = $this->categoryRepository->getAll();
+        
         return view('pages.posts.editPost', ['post' => $post, 'categories' => $categories]);
     }
     public function update($id, Request $request) {

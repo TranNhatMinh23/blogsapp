@@ -14,17 +14,15 @@ class ProfileImpl extends EloquentRepositories implements IProfile {
         return \App\Models\Profile::class;
     }
     public function moveFile($request) {
-        // $file_name = $request->file('avarta')->getClientOriginalName();
-        // $file_name = $request->avarta;
-        // $file = $request->avarta;
-        // $file->move('images', $file_name);
-        // $this->avarta = $file_name;
-        // return true;
+        $file = $request->avarta;
+        $file_name = $file->getClientOriginalName();
+        $file->move('images', $file_name);
+        $this->avarta = $file_name;
+        return true;
     }
-    public function saveFile($id) {
+    public function saveAvarta($id, $request) {
         $profile = Profile::find($id);
-        $profile->avarta = $this->avarta;
-        $profile->user_id = Auth::id();
+        $profile->avarta = $request->avarta->getClientOriginalName();
         $profile->save();
     }
 

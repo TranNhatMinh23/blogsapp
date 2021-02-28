@@ -53,6 +53,7 @@ Route::group(['prefix' => 'profile' ,'middleware' => ['auth']], function () {
     Route::get('/{profile}', 'ProfileController@index')->name('profile.index');
     Route::get('/update/{profile}', 'ProfileController@edit')->name('profile.edit');
     Route::post('/update/{profile}', 'ProfileController@update')->name('profile.update');
+
 });
 
 

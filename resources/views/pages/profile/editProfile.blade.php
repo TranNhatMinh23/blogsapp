@@ -26,20 +26,20 @@
     </ul>
     <div class="tab-content" id="myTabContent">
         <div class="tab-pane fade show active" id="userTab" >
-            <form method="POST" action="{{ route('profile.update', Auth::id()) }}">
+            <form method="POST" action="{{ route('profile.update', Auth::id()) }}" enctype="multipart/form-data">
                 @csrf
                 <section>
                     <label for="">Ảnh đại diện</label>
-                    <!-- <input type="file" onchange="readURL(this)" accept="image/png, image/jpeg" class="file-upload-input"  name="avarta" id="avarta-edit"> -->
+                    <input type="file" onchange="readURL(this)" accept="image/png, image/jpeg" class="file-upload-input"  name="avarta" id="avarta-edit">
                     <div class="img-edit">
                         <img class="file-upload-image" src="{{ asset('images/'. $profile->avarta) }}" alt="">
-                        <!-- <div id="inputFile">
+                        <div id="inputFile">
                             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-camera-fill" viewBox="0 0 16 16">
                                 <path d="M10.5 8.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
                                 <path d="M2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4H2zm.5 2a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1zm9 2.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0z"/>
                             </svg>
-                        </div> -->
-                        <input type="hidden" name="avarta" value="avarta_default.png" id="">
+                        </div>
+                        
                     </div>
                 </section>
                 <br>

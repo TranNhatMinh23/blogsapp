@@ -13,12 +13,6 @@ class PostsTableSeeder extends Seeder
      */
     public function run()
     {
-        for($i = 0; $i< 10; $i++) {
-        DB::table('posts')->insert([
-            'title' => Str::random(10),
-            'content' => Str::random(150),
-            'user_id' => random_int(1,20)
-        ]);
-        }
+       
     }
 }

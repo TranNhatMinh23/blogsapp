@@ -12,11 +12,6 @@ class CategoryPostTableSeeder extends Seeder
      */
     public function run()
     {
-        for($i = 0; $i<10; $i++){
-            DB::table('category_post')->insert([
-                'post_id' => random_int(1,2),
-                'category_id' => random_int(1,2)
-            ]);
-        }
+        
     }
 }

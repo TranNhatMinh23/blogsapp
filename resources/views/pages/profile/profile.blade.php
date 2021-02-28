@@ -20,8 +20,8 @@
                     
                     <div class="profile-head-statistic">
                         <span>{{ count($user->posts) }} bài viết</span>
-                        <span>200 bình luận</span>
-                        <span>4000 lượt xem</span>
+                        <span>{{ $countComment }} comment</span>
+                        <span>{{ $countView }} lượt xem</span>
                     </div>
                     <div class="profile-head-social">
                         <a target="break" href="{{ $user->profile->fbsocial }}" id="fb">

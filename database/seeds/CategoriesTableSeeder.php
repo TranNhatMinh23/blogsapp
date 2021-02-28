@@ -13,10 +13,22 @@ class CategoriesTableSeeder extends Seeder
      */
     public function run()
     {
-        for($i = 0; $i<4; $i++){
-            DB::table('categories')->insert([
-                'name' => Str::random(10),
-            ]);
-        }
+        DB::table('categories')->insert([
+            'name' => 'Lập Trình',
+            'slug' => 'lap-trinh'
+        ]);
+        DB::table('categories')->insert([
+            'name' => 'Data',
+            'slug' => 'data'
+        ]);
+        DB::table('categories')->insert([
+            'name' => 'Ai',
+            'slug' => 'ai'
+            
+        ]);
+        DB::table('categories')->insert([
+            'name' => 'DevOps',
+            'slug' => 'devops'
+        ]);
     }
 }
