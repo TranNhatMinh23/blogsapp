@@ -33,9 +33,9 @@
                 <label for="{{ $category->id }}"> {{ $category->name }}</label><br>
                 @endforeach
                 </div>
-                <button type="button" class="add-category" data-toggle="modal" data-target="#exampleModal">
+                <!-- <button type="button" class="add-category" data-toggle="modal" data-target="#exampleModal">
                     Thêm chủ đề
-                </button>
+                </button> -->
 
             </div>
             <div class="form-group">
