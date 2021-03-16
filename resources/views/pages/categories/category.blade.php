@@ -17,7 +17,7 @@
             <a href="{{ route('post.show',$post->slug) }}" class="blog-title">{{ $post->title }}</a>
             <div class="blog-categories">
                 @foreach($post->category as $category)
-                <a href="{{ route('category.show', $category->slug) }}" id="blog-category">{{ $category->name }}</a>
+                <a href="{{ route('category.show', $category->slug) }}" class="categories-item">#{{ $category->name }}</a>
                 @endforeach
             </div>
             <div class="author-delete-edit">

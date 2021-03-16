@@ -1,6 +1,8 @@
 body {
-    background: #FDFDFD;
+    
+    font-family: Open Sans, Helvetica, Arial, sans-serif;
 }
+
 .sticky-header {
     position: fixed;
     top: 0;
@@ -28,7 +30,22 @@ a {
     margin: 0;
 }
 .navbar-laravel {
-    background: #1c3a3a;
+    /* background: #182031; */
+    /* background:  transparent !important; */
+    box-shadow:  none !important;
+}
+
+.categories-item {
+    font-size: 12px;
+    background: transparent;
+    margin-right: 5px;
+    display: inline-block;
+    border: 1px solid rgb(100 147 247);
+    color: #fff;
+    font-weight: normal;
+    border-radius: 0.325em;
+    margin:  5px 0;
+    padding: 0.1em 0.5em;
 }
 .navbar-laravel .nav-item a span{
     color: white;
@@ -43,6 +60,7 @@ a {
     
     
 }
+
 .navbar-laravel .nav-item .nav-link .header-mb-logout, .navbar-laravel .nav-item .nav-link .header-mb-newblog {
     width: 16px;
     height: 16px;
@@ -50,10 +68,93 @@ a {
     margin-top: 0;
     margin-right: 5px;
 }
+.navbar-laravel .header {
+    display:flex;
+    margin-bottom: 0px;
+    padding: 10px 0;
+}
+.navbar-laravel .header ul.navbar-nav {
+    flex-direction: row;
+    align-items: center;
+}
+
+.navbar-laravel .header ul.navbar-nav li {
+    margin-left: 15px;
+}
+.navbar-laravel .header ul.navbar-nav li form {
+    margin-top: 5px;
+}
 
 .navbar-laravel .logo {
-    font-family: BEYNO;
+    font-family: 'Monoton', cursive;
     color: white !important;
+    font-size: 25px;
+}
+.banner__search {
+    position: relative;
+    background: linear-gradient(344deg, #20c6b7 0%, #1e6e94 100%);
+    border-radius: 12px;
+    color: #fff;
+    padding: 27px 0;
+    min-height: 200px;
+    margin-bottom: 30px;
+}
+
+.banner__search--background-img {
+    background-image: url(https://aws1.discourse-cdn.com/netlify/original/3X/d/1/d11a2d581afdcccc4ed548b3886c6165f9ef12d9.png);
+    background-position: right;
+    background-repeat: no-repeat;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    background-size: contain;
+}
+.banner__search h1 {
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+    margin: 0;
+}
+.banner__search p {
+    text-align: center;
+    font-size: 14px;
+    margin: 0px 0 15px 0;
+}
+.banner__search form {
+    background: #182031;
+    border: none;
+    position: relative;
+    max-width: 600px;
+    margin: auto;
+    border-radius: 7px;
+    
+}
+.banner__search form button {
+    background: transparent;
+    outline: none;
+    position: absolute;
+    right: 8px;
+    top: 9px;
+    border: none;
+    
+}
+.banner__search form button svg {
+    color: #fff;
+
+}
+.banner__search form input {
+    width: 100%;
+    color: rgb(100 147 247);
+    border: none;
+    padding: 10px 11px;
+    background: #051840;
+    border-radius: 7px;
+
+}
+.banner__search form input::placeholder {
+    color: #5488c7;
+    font-size: 15px;
 }
 .layout-sidebar hr {
     height: 0.5px;
@@ -63,14 +164,12 @@ a {
     font-size:29px
 }
 .blogs .blog {
-    background: white;
-    /* box-shadow: 0px 0px 5px #ccc; */
-    /* margin-bottom: 10px; */
+    color: #fff;
     border-radius: 3px;
     padding: 10px;
     display: flex;
     position: relative;
-    border-bottom: 1px solid rgba(0,0,0,.1);
+    border-bottom: 0.3px solid rgb(100 147 247 / 28%);
 }
 .blogs .blog:last-child {
     border-bottom: none;
@@ -107,13 +206,14 @@ a {
     font-size: 18px;
     margin: 0;
     display: block;
+    color: #fff;
     padding-right: 69px;
 
 }
 
 .blog .blog-other {
     display: inline-flex;
-    font-size: 13px;
+    font-size: 12px;
 }
 .blog .blog-body {
     padding-right: 30px;
@@ -125,9 +225,11 @@ a {
 .blog .author-delete-edit a {
     margin-right: 5px;
     font-size: 13px;
+    color: #fff;
 }
 .blog .blog-other a {
     color: #5488c7;
+    font-size: 13px;
     /* font-weight: bold; */
     margin-right: 5px;
 }

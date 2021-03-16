@@ -1,0 +1,80 @@
+.light {
+    background: #fff !important;
+}
+
+.light .navbar-laravel {
+    background: linear-gradient(344deg, #1e6e94 0%, #20c6b7 100%);
+}
+
+.light .navbar-laravel .logo {
+    /* color: black !important; */
+}
+.light .navbar-laravel .nav-item a span {
+    color: black !important;
+}
+
+.light .blog .blog-title {
+    color: black;
+}
+
+.light aside article .categories a {
+    color: black;
+}
+
+.light aside article h1 {
+    color: black;
+}
+
+.light .blog .author-delete-edit a {
+    color: black;
+}
+
+.light .banner__search form input {
+    background: #fff;
+    color: black;
+}
+.light .banner__search form input:placeholder {
+    color: black;
+}
+
+.light .banner__search form button svg {
+    color: #aaa;
+}
+
+.light .blog .blog-other {
+    color: black;
+}
+
+.light .blog .blog-other a {
+    color: #5488c7;
+}
+.light .blogs .blog {
+    border-bottom: 1px solid #ddd;
+}
+
+.light .detailPost .content h1 {
+    /* color:  */
+}
+
+.light .blog .blog-categories #blog-category {
+    font-size: 12px;
+    background: transparent;
+    margin-right: 5px;
+    padding: 3px 15px;
+    border-radius: 10px;
+    display: inline-block;
+    vertical-align: middle;
+    /* margin: -0.25em 0.25em 0em; */
+    border: 1px solid rgb(100 147 247);
+    padding: 0.5em 0.8em;
+    /* text-transform: uppercase; */
+    font-weight: normal;
+    border-radius: 0.325em;
+    margin-bottom: 13px;
+}
+
+.light .categories-item {
+    color: black;
+}
+
+

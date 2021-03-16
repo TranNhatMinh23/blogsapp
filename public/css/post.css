@@ -26,6 +26,9 @@
 .detailPost .content .creator {
     display: flex;
 }
+.detailPost .content .creator-name {
+    margin-top: 5px;
+}
 .detailPost .content .creator .creator-img{
     width: 25px;
     height: 25px;
@@ -47,7 +50,7 @@
 
 .sticky-score {
     position: fixed;
-    top: 100px;
+    top: 200px;
     /* left: 30px; */
     z-index: 11;
 }

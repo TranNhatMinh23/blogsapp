@@ -3,7 +3,7 @@
 @section('title', 'Bài viết')
 
 @section('content-master')
-    <div class="container background-post">
+    <div class="background-post">
         <div class="detailPost"> 
             <div class="fix-left sticky-score">
                 <a href="#"><img src="{{ asset('images/' . $post->user->profile->avarta) }}"></a>
@@ -29,7 +29,7 @@
             
                 <div class="detail-categories">
                 @foreach($post->category as $category)
-                <a href="{{ route('category.show', $category->slug) }}">{{ $category->name }}</a>
+                <a href="{{ route('category.show', $category->slug) }}" class="categories-item">{{ $category->name }}</a>
                 @endforeach
                     
                 </div>
@@ -236,7 +236,7 @@
     $(document).ready(function(){
         var width = $(".background").width();
     var screen = $("#app").width();
-    var cal = ((screen - width) / 2) - 35;
+    var cal = ((screen - width) / 2) - 45;
     console.log('background: '+ width + " screen: " + screen)
     $(".fix-left").css("left", cal);
     })

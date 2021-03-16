@@ -73,6 +73,7 @@ class PostController extends Controller
     public function update($id, Request $request) {
         $this->postRepository->update($id, $request->all());
         $post = $this->postRepository->find($id);
+        echo $request->categorySelect;
         $post->category()->sync($request->categorySelect);
         $slug = $post->slug;
         return redirect(route('post.show', $slug));

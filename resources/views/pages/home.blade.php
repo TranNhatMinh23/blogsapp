@@ -3,7 +3,9 @@
 @section('title', 'Home')
 
 @section('content-master')
-<div class="blogs">          
+
+<div class="blogs">   
+           
     @if(count($posts) === 0)
         Hiện không có bài viết nào
     @else
@@ -16,7 +18,7 @@
             <a href="{{ route('post.show',$post->slug) }}" class="blog-title">{{ $post->title }}</a>
             <div class="blog-categories">
                 @foreach($post->category as $category)
-                <a href="{{ route('category.show', $category->slug) }}" id="blog-category">{{ $category->name }}</a>
+                <a href="{{ route('category.show', $category->slug) }}" class="categories-item">{{ $category->name }}</a>
                 @endforeach
             </div>
             <div class="author-delete-edit">

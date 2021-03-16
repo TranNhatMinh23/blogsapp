@@ -1,0 +1,111 @@
+.dark {
+    background: #182031 !important;
+}
+
+.dark .navbar-laravel {
+    background: transparent;
+}
+
+.dark .detailPost .content h1 {
+    color: #fff;
+}
+
+.dark .detailPost .content a {
+    color: #ccc;
+    font-size: 12px;
+}
+
+.dark .detailPost .detail-categories a{
+    font-size: 12px;
+    background: transparent;
+    margin-right: 5px;
+    border-radius: 10px;
+    display: inline-block;
+    border: 1px solid rgb(100 147 247);
+    color: #fff;
+    font-weight: normal;
+    border-radius: 0.325em;
+    margin: 5px 0;
+    padding: 0.1em 0.5em;
+}
+
+.dark .creator .creator-name {
+    font-size: 12px;
+    color: #bbb;
+}
+.dark .creator .creator-name a {
+    font-size: 13px;
+    color: #5488c7;
+}
+
+.dark .detailPost .content #contentString{
+    color: #ccc;
+}
+
+.dark .listComment .comment .commentbody #commentname #commentdel {
+    color: #ccc;
+    font-size: 12px;
+}
+
+.dark .listComment .comment .commentbody {
+    color: #ccc;
+}
+
+
+.dark .countComment {
+    color: #ccc;
+}
+
+.dark .blogs h1#blog-category {
+    color: #ccc;
+    
+}
+
+.dark .blog .blog-categories #blog-category {
+    font-size: 11px;
+    background: transparent;
+    margin-right: 5px;
+    border-radius: 10px;
+    display: inline-block;
+    border: 1px solid rgb(100 147 247);
+    padding: 0 5px;
+    color: #fff;
+    font-weight: normal;
+    border-radius: 0.325em;
+    margin: 5px 0;
+}
+
+.dark .profile-posts .active {
+    background: transparent !important;
+    color: #ccc;
+}
+
+.dark .blog .author-delete-edit .publishbtn {
+    color: #182031;
+}
+
+.dark .profile-posts #unpublish-tab, .dark .profile-posts #published-tab{
+    color: #ccc;
+    border-bottom: none;
+}
+
+.dark .profile-head-info .head-info-name h1 {
+    color: #ccc;
+}
+
+.dark .profile-head-info .profile-head-statistic {
+    color: #ccc;
+}
+
+.dark .profile-head-info .head-info-name a {
+    color: #ccc;
+    border: 1px solid #ccc;
+}
+
+.dark .blog .author-delete-edit a {
+    color: #ccc;
+}
+
+.dark .blog .blog-other {
+    color: #ccc;
+}

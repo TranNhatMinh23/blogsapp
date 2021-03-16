@@ -54,6 +54,9 @@
     position: relative;
     margin-bottom: 20px; 
 }
+.listComment .comment:last-child {
+    border-bottom: none;
+}
 .listComment .comment .commentimg {
     display: block;
     width: 40px;
