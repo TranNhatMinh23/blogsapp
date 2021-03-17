@@ -114,7 +114,7 @@
         
     }
     .navbar-laravel .header ul.show-navbar {
-        right: 0 !important;
+        right: -18px !important;
         background: #182031;
         border: 1px solid #ccc;
         border-radius: 5px 0 0 5px;
