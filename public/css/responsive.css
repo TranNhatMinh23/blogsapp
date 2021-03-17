@@ -107,7 +107,7 @@
     }
     .navbar-laravel .header ul.navbar-nav {
         position: absolute;
-        right: -224px;
+        right: -222px;
         transition: 0.5s ease;
         opacity: 1;
         
