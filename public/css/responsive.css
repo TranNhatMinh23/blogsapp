@@ -118,6 +118,7 @@
         border: 1px solid #ccc;
         border-radius: 5px 0 0 5px;
         padding-right: 65px;
+        min-height: 48px;
     }
     .navbar-laravel .header .iconMenu-res {
         display: block;
