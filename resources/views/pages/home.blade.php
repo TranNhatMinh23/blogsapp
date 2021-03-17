@@ -30,7 +30,6 @@
             </div>
             <!-- <div id="content-short">{!! trim(substr($post->content, 0 , 150)) !!}... </div> -->
             <div class="blog-other">
-            
                 <a href="{{ route('profile.index', $post->user->slug )}}">  {{ $post->user->name }} </a> đăng {{ $post->getCreated_atAttribute()}}
                 <div class="blog__view-count-edit">
                     <div class="count-comment">

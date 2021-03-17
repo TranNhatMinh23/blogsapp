@@ -1,6 +1,7 @@
 body {
     
     font-family: Open Sans, Helvetica, Arial, sans-serif;
+    
 }
 
 .sticky-header {
@@ -10,8 +11,15 @@ body {
     width: 100%;
     z-index: 11;
 }
-
-
+.checkox_setBackground {
+    margin-top: 7px;
+}
+#app {
+    min-height: 1000px;
+}
+#app .tox-tinymce {
+    min-height: 700px;
+}
 .main {
     margin: 10px 0;
 }
@@ -36,7 +44,7 @@ a {
 }
 
 .categories-item {
-    font-size: 12px;
+    /* font-size: 12px;
     background: transparent;
     margin-right: 5px;
     display: inline-block;
@@ -45,7 +53,7 @@ a {
     font-weight: normal;
     border-radius: 0.325em;
     margin:  5px 0;
-    padding: 0.1em 0.5em;
+    padding: 0em 0.5em; */
 }
 .navbar-laravel .nav-item a span{
     color: white;
@@ -150,6 +158,7 @@ a {
     padding: 10px 11px;
     background: #051840;
     border-radius: 7px;
+    padding-right: 40px;
 
 }
 .banner__search form input::placeholder {
@@ -166,7 +175,7 @@ a {
 .blogs .blog {
     color: #fff;
     border-radius: 3px;
-    padding: 10px;
+    padding: 10px 0;
     display: flex;
     position: relative;
     border-bottom: 0.3px solid rgb(100 147 247 / 28%);
@@ -217,7 +226,6 @@ a {
 }
 .blog .blog-body {
     padding-right: 30px;
-    line-height: 28px;
 }
 .blog .blog-body #timePost {
     margin-bottom: 0;
@@ -292,9 +300,9 @@ a {
 
 .point .point-icon .bi-caret-up-fill {
     position: relative;
-    top: 1px;
+    top: -4px;
 }
 .point .point-icon .bi-caret-down-fill {
     position: relative;
-    top: -4px;
+    top: -10px;
 }

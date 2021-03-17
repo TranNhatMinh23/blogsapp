@@ -18,32 +18,39 @@
         
         <form id="form-add-post" method="POST" action="{{ route('post.store') }}">
         @csrf
-            <div class="form-group">
-                <label for="">Tiêu đề bài viết</label>
-                <input name="title" type="text" class="form-control" id="title-post" placeholder="Tiêu đề bài viết">
-            </div>
-            <input name="slug" type="hidden" value="" id="slug-post">
-            <input name="user_id" value="{{ Auth::id() }}" type="hidden" class="form-control">
-            <div class="form-group">
-                <label for="">Chủ đề</label>
-                <br>
-                <div class="categoriesform">
-                @foreach($category as $category )
-                <input type="checkbox" class="select-category"  id="{{ $category->id }}" name="categorySelect[]" value="{{ $category->id }}">
-                <label for="{{ $category->id }}"> {{ $category->name }}</label><br>
-                @endforeach
+            <div class="row">
+                <div class="col-md-9">
+                    <div class="form-group">
+                        <label for="">Tiêu đề bài viết</label>
+                        <input name="title" type="text" class="form-control" id="title-post" placeholder="Tiêu đề bài viết">
+                    </div>
+                    <input name="slug" type="hidden" value="" id="slug-post">
+                    <input name="user_id" value="{{ Auth::id() }}" type="hidden" class="form-control">
+                    <div class="form-group">
+                        <label for="exampleFormControlTextarea1">Nội dung</label>
+                        <textarea name="content" class="form-control my-editor" ></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" id="savePost">Lưu bài viết</button>
+                    <button type="submit" class="btn btn-primary" id="publishPost">Đăng bài viết</button>
                 </div>
-                <!-- <button type="button" class="add-category" data-toggle="modal" data-target="#exampleModal">
-                    Thêm chủ đề
-                </button> -->
+                <div class="col-md-3">
+                    
+                    <div class="form-group">
+                        <label for="">Chủ đề</label>
+                        <br>
+                        <div class="categoriesform">
+                        @foreach($category as $category )
+                        <input type="checkbox" class="select-category"  id="{{ $category->id }}" name="categorySelect[]" value="{{ $category->id }}">
+                        <label for="{{ $category->id }}"> {{ $category->name }}</label><br>
+                        @endforeach
+                        </div>
+                        <button type="button" class="add-category" data-toggle="modal" data-target="#exampleModal">
+                            Thêm chủ đề
+                        </button>
 
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="exampleFormControlTextarea1">Nội dung</label>
-                <textarea name="content" class="form-control my-editor" ></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary" id="savePost">Lưu bài viết</button>
-            <button type="submit" class="btn btn-primary" id="publishPost">Đăng bài viết</button>
         </form>
         
         

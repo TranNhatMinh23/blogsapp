@@ -27,6 +27,8 @@
     <link href="{{ asset('css/post.css') }}" rel="stylesheet">
     <link href="{{ asset('css/responsive.css') }}" rel="stylesheet">
     
+    <link href="{{ asset('css/checkboxes.min.css') }}" rel="stylesheet">
+
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
 

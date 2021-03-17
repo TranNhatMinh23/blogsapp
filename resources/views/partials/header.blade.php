@@ -1,19 +1,15 @@
 
+<!-- https://hunzaboy.github.io/CSS-Checkbox-Library/# -->
 
-<nav class="navbar-laravel ">
-    <div class="container">
-        <div class="header">
+<nav class="navbar-laravel">
+    <div class="">
+        <div class="header container">
             <a class="navbar-brand logo" href="{{ url('/') }}">
                 CODE HAY HO
             </a>
             
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <form action="">
-                        <input type="radio" name="bg" value="1" id="checkBg">
-                        <input type="radio" name="bg" value="0" id="checkBg1" checked>
-                    </form>
-                </li>
+                
                 @guest
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -59,6 +55,12 @@
                     
                     
                 @endguest
+                <li class="nav-item">
+                    <div class="ckbx-style-7 checkox_setBackground">
+                        <input type="checkbox" id="ckbx-style-7-1" value="11111" name="ckbx-style-7">
+                        <label for="ckbx-style-7-1"></label>
+                    </div>
+                </li>
                 
             </ul>
         </div>
@@ -66,24 +68,20 @@
 </nav>
 <script>
     $(document).ready(function(){
-        x = document.cookie['typeBackground'];
-        alert(x);
-        var bool = false;
-        $("#checkBg").click(function() {
-            bool = true;
-            $string = 'light';
-            setupBackground(bool);
-            setCookie($string)
-        })
-        $("#checkBg1").click(function() {
-            bool = false;
-            $string = 'dark';
-            setupBackground(bool);
-            setCookie($string)
+
+        $(".checkox_setBackground input[type='checkbox']").click(function() {
+            $isCheck = $(this).is(":checked");
+            if($(this).is(":checked")) {
+                setupBackground($isCheck);
+            }
+            else {
+                setupBackground($isCheck);
+            }
         })
 
         function setupBackground($bool) {
-            if(bool) {
+            console.log($bool);
+            if($bool) {
                 $("#app").removeClass("dark");
                 $("#app").addClass("light");
                 
@@ -93,11 +91,8 @@
                 $("#app").addClass("dark");
             }
         }
-
-        function setCookie($string) {
-            document.cookie = "typeBackground=" + $string;
-        }
     })
 
 
 </script>
+

@@ -14,18 +14,20 @@ aside article .categories a {
     border-radius: 10px;
     display: inline-block;
     vertical-align: middle;
-    /* margin: -0.25em 0.25em 0em; */
     border: 1px solid rgb(100 147 247);
     padding: 0.5em 0.8em;
     color: #fff;
-    /* text-transform: uppercase; */
     font-weight: normal;
     border-radius: 0.325em;
-    margin-bottom: 13px;
 } 
-
 aside article {
-    /* border-bottom: 1px solid #ccc; */
+    padding: 15px 0;
+}
+aside article:first-child {
+    padding: 0 0 15px 0;
+}
+aside article:last-child {
+    border-bottom: none;
 }
 aside article svg {
     position: relative;
