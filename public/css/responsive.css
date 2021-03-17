@@ -101,6 +101,7 @@
     }
     .header {
         flex-wrap: inherit !important;
+        position: relative;
     }
     .navbar-laravel .logo {
         width: 100%;
