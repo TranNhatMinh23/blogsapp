@@ -13,7 +13,7 @@
 }
 .articleComment .img-formComment img {
     width: 100%;
-    border-radius: 5px;
+    border-radius: 100%;
     width: 30px;
     height: 30px;
 }
@@ -24,11 +24,13 @@
 }
 .articleComment #formComment input[type="text"] {
     width: 100%;
-    /* border-radius: 4px; */
     border: none;
-    border-bottom: 1px solid black;
     padding: 3px 11px;
     margin-bottom: 5px;
+    border-radius: 15px;
+    outline: none;
+    
+
 }
 .articleComment #formComment input[type="text"]:focus {
     border: none ;
@@ -50,27 +52,28 @@
 }
 .listComment .comment {
     display: flex;
-    border-bottom: 1px solid #ccc;
     position: relative;
-    margin-bottom: 20px; 
+    padding: 10px 0;
 }
 .listComment .comment:last-child {
     border-bottom: none;
 }
 .listComment .comment .commentimg {
     display: block;
-    width: 40px;
-    height: 40px;
     margin-right: 10px;
+    margin-top: 6px;
 }
 .listComment .comment .commentimg img {
     width: 100%;
-    border-radius: 5px;
-    width: 40px;
-    height: 40px;
+    border-radius: 100%;
+    width: 30px;
+    height: 30px;
 }
 .listComment .comment .commentbody {
     width: 100%;
+}
+.listComment .comment .commentbody #commentcontent {
+    margin: 0;
 }
 .listComment .comment .commentbody #commentname {
     font-weight: bold;

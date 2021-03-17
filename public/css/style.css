@@ -166,6 +166,7 @@ a {
     background: #051840;
     border-radius: 7px;
     padding-right: 40px;
+    outline: none;
 
 }
 .banner__search form input::placeholder {

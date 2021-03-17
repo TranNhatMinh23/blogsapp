@@ -142,3 +142,7 @@
 .dark .ckbx-style-7 label:after {
     background: #1f9fa7;
 }
+
+.dark .listComment .comment {
+    border-bottom: 0.3px solid rgb(100 147 247 / 28%);
+}
