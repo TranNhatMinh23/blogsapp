@@ -81,6 +81,10 @@ a {
     margin-bottom: 0px;
     padding: 10px 0;
 }
+.navbar-laravel .header .iconMenu-res {
+    display: none;
+    z-index: 111;
+}
 .navbar-laravel .header ul.navbar-nav {
     flex-direction: row;
     align-items: center;

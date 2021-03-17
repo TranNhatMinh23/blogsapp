@@ -7,9 +7,12 @@
             <a class="navbar-brand logo" href="{{ url('/') }}">
                 CODE HAY HO
             </a>
-            
+            <div class="iconMenu-res">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M2.5 11.5A.5.5 0 0 1 3 11h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 7h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 3h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+            </svg>
+            </div>
             <ul class="navbar-nav ml-auto">
-                
                 @guest
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -61,7 +64,6 @@
                         <label for="ckbx-style-7-1"></label>
                     </div>
                 </li>
-                
             </ul>
         </div>
     </div>
@@ -91,6 +93,10 @@
                 $("#app").addClass("dark");
             }
         }
+
+        $(".iconMenu-res").click(function() {
+            $(".navbar-laravel .header ul.navbar-nav").toggleClass("show-navbar");
+        })
     })
 
 

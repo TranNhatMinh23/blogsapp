@@ -63,7 +63,7 @@
 
 /* mobile */
 @media only screen and (max-width: 739px){
-    #app {
+    .py-4 {
         padding: 0 10px;
     }
     .container {
@@ -92,15 +92,48 @@
     .header .newblog {
         display: none;
     }
-    .header .header-mb-newblog {
+    .navbar-laravel .nav-item .nav-link .header-mb-newblog {
         display: block;
-        width: 25px;
-        height: 25px;
+        width: 26px;
+        height: 26px;
         color: #ccc;
-        margin-top: 5px;
+
     }
     .header {
         flex-wrap: inherit !important;
+    }
+    .navbar-laravel .logo {
+        width: 100%;
+    }
+    .navbar-laravel .header ul.navbar-nav {
+        position: absolute;
+        right: -224px;
+        transition: 0.5s ease;
+        opacity: 1;
+        
+    }
+    .navbar-laravel .header ul.show-navbar {
+        right: 0 !important;
+        background: #182031;
+        border: 1px solid #ccc;
+        border-radius: 5px 0 0 5px;
+        padding-right: 65px;
+    }
+    .navbar-laravel .header .iconMenu-res {
+        display: block;
+        margin: auto;
+        color: #fff;
+        cursor: pointer;
+    }
+    .navbar-laravel .header .iconMenu-res svg {
+        width: 33px;
+        height: 33px;
+        margin: auto;
+    }
+    .navbar-laravel .nav-item .nav-link .header-mb-logout {
+        width: 30px;
+        height: 30px;
+        margin: auto;
     }
     .header-mb-search {
         display: block;
