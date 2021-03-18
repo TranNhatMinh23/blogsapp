@@ -232,6 +232,8 @@
                 success: function(data)
                 {
                     let str = `
+                    @guest
+                    @else
                     <div class="comment" id="comment-`+ data.id +`">
                         <input type="hidden" value="`+ data.id +`"id="idComment">
                         <a href="profile/{{Auth::user()->slug}}" class="commentimg">
@@ -247,6 +249,7 @@
                         
                         <div id="commenttime">5 phút trước</div>
                     </div>
+                    @endguest
                     `;
                     $(".listComment").prepend(str);
                     $(".inputComment").val('');
