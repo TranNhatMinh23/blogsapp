@@ -113,7 +113,6 @@ class PostController extends Controller
 
     public function destroyComment($id) {
         $this->commentRepository->delete($id);
-        $post = $this->commentRepository->find($id);
         return redirect()->back();
     }
 

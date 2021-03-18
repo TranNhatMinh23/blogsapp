@@ -72,25 +72,47 @@
                         <!-- <input type="submit" value="Bình luận"> -->
                     </form>
                 </div>
-                <div class="countComment">{{ count($comments)}} bình luận</div>
+                <div class="countComment"><span id="count">{{ count($comments)}}</span> bình luận</div>
                 <div class="listComment">
                     @foreach($comments as $comment)
-                    <div class="comment">
+                    <div class="comment" id="comment-{{ $comment->id }}">
                         <input type="hidden" value="{{ $comment->id}}"id="idComment">
                         <a href="{{ route('profile.index', $comment->users->slug) }}" class="commentimg">
                         <img src="{{ asset('/images/' . $comment->users->profile->avarta ) }}" alt="">
                         </a>
-                        <div class="commentbody">
-                            <div id="commentname">
-                            <a href="{{ route('profile.index', $comment->users->slug) }}" id="name">{{ $comment->users->name }}</a>
-                            @can('update', $comment)
-                            <a href="{{route('comment.destroy',$comment->id)}}" id="commentdel" data-id="{{ $comment->id }}">Xóa comment</a>
-                            @endcan
+                        <div class="comment-right">
+                            <div class="commentbody commentbody-{{ $comment->id }}">  
+                                <div id="commentname">
+                                <a href="{{ route('profile.index', $comment->users->slug) }}" id="name">{{ $comment->users->name }}</a>
+                                <div class="dropdown dropdown-action">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                        ...
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                        <li>
+                                            @can('update', $comment)
+                                            <a href="{{route('comment.destroy',$comment->id)}}" id="commentdel" data-id="{{ $comment->id }}">Xóa comment</a>
+                                            @endcan
+                                        </li>
+                                        <li>
+                                            @can('update', $comment)
+                                            <a href="" id="commentedit" data-id="{{ $comment->id }}">Chỉnh sửa comment</a>
+                                            @endcan
+                                        </li>
+                                    </ul>
+                                </div>
+                                </div>
+                                <p id="commentcontent">{{ $comment->content }}</p>
+                                <div id="commenttime">30 phút trước</div>
                             </div>
-                            <p id="commentcontent">{{ $comment->content }}</p>
+                            <form class="form-edit-comment form-edit-{{ $comment->id }}">
+                                <input type="text" class="input-edit-{{ $comment->id }}"  name="" id="">
+                                <!-- <input type="submit" value="Cập nhật"> -->
+                                <span class="cancel-update" data-id="{{ $comment->id }}" >Cancel</span>
+                            </form>
                         </div>
                         
-                        <div id="commenttime">30 phút trước</div>
+                        
                     </div>
                     @endforeach
                 </div>
@@ -196,6 +218,8 @@
             let user = '{{ Auth::id() }}';
             let post = '{{ $post->id }}';
             let _token = $("input[name=_token]").val();
+            let countComment = $("#count").html();
+            
             $.ajax({
                 url: "{{ route('comment.store') }}",
                 type: "POST",
@@ -208,15 +232,15 @@
                 success: function(data)
                 {
                     let str = `
-                    <div class="comment">
+                    <div class="comment" id="comment-`+ data.id +`">
                         <input type="hidden" value="`+ data.id +`"id="idComment">
-                        <a href="#" class="commentimg">
+                        <a href="profile/{{Auth::user()->slug}}" class="commentimg">
                         <img src="`+ url_avarta +`" alt="">
                         </a>
                         <div class="commentbody">
                             <div id="commentname">
-                            <a href="#" id="name">`+ name +`</a>
-                            <a href="" id="commentdel" data-id="`+ data.id +`">Xóa comment</a>
+                            <a href="profile/{{Auth::user()->slug}}" id="name">`+ name +`</a>
+                            <a href="comment/`+ data.id +`" id="commentdel" data-id="`+ data.id +`">Xóa comment</a>
                             </div>
                             <p id="commentcontent">`+ data.content + `</p>
                         </div>
@@ -226,19 +250,56 @@
                     `;
                     $(".listComment").prepend(str);
                     $(".inputComment").val('');
+                    $("#count").html(parseInt(countComment)+1);
                 },
             })
 
-        })        
+        })
+        $(document).on('click', '#commentdel', function(e) {
+            e.preventDefault();
+            let id = $(this).attr('data-id');
+            let url = "{{ route('comment.destroy', 33333) }}";
+            let urlDel = url.replace('33333', id);
+
+            $.ajax({
+                url: urlDel,
+                type: "GET",
+                success: function(data) {
+                    $("#comment-"+id).remove();
+                }
+
+            })
+        })
+
+        // comment edit
+        $(document).on('click', '#commentedit', function(e) {
+            e.preventDefault();
+            let id = $(this).attr('data-id');
+            $(".form-edit-comment").hide();
+            $(".commentbody").show();
+            $(".form-edit-"+id).show();
+            $(".commentbody-"+id).hide();
+
+            let contentEdit = $(".commentbody-"+id).children("#commentcontent").html();
+            $(".input-edit-"+id).val(contentEdit);
+            $(".input-edit-"+id).focus();
+        })
+
+        // comment cancel
+        $(document).on('click', '.cancel-update', function(e) {
+            let id = $(this).attr('data-id');
+            $(".form-edit-"+id).hide();
+            $(".commentbody-"+id).show();
+        })
     </script>
 
     <script>
     $(document).ready(function(){
         var width = $(".background").width();
-    var screen = $("#app").width();
-    var cal = ((screen - width) / 2) - 45;
-    console.log('background: '+ width + " screen: " + screen)
-    $(".fix-left").css("left", cal);
+        var screen = $("#app").width();
+        var cal = ((screen - width) / 2) - 45;
+        console.log('background: '+ width + " screen: " + screen)
+        $(".fix-left").css("left", cal);
     })
     window.onscroll = function() {myFunction()};
     

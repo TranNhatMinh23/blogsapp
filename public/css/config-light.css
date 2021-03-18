@@ -100,3 +100,19 @@
 .light .listComment .comment {
     border-bottom: 0.3px solid #ddd;
 }
+
+.light .listComment .comment .commentbody {
+    background: #ddd;
+}
+
+.light .listComment .comment .commentbody #commentname .dropdown-action button {
+    color: black;
+}
+.light .listComment .comment .commentbody #commentname .dropdown-action ul {
+    background:#fff;
+    border: 1px solid #ccc;
+}
+
+.light .listComment .comment .commentbody #commentname .dropdown-action ul li a {
+    color: black;
+}

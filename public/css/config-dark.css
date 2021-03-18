@@ -42,7 +42,7 @@
     color: #ccc;
 }
 
-.dark .listComment .comment .commentbody #commentname #commentdel {
+.dark .listComment .comment .commentbody #commentname #commentdel, .dark .listComment .comment .commentbody #commentname #commentedit {
     color: #ccc;
     font-size: 12px;
 }
@@ -145,4 +145,15 @@
 
 .dark .listComment .comment {
     border-bottom: 0.3px solid rgb(100 147 247 / 28%);
+}
+
+.dark .listComment .comment .commentbody {
+    border: 0.3px solid rgb(100 147 247 / 28%);
+}
+
+.dark .listComment .comment #commenttime {
+    color: #ccc;
+}
+.dark .listComment .comment .comment-right .form-edit-comment .cancel-update {
+    color: #ccc;
 }

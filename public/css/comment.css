@@ -69,8 +69,32 @@
     width: 30px;
     height: 30px;
 }
-.listComment .comment .commentbody {
+.listComment .comment .comment-right {
     width: 100%;
+}
+
+.listComment .comment .commentbody {
+    width: auto;
+    max-width: 450px;
+    padding: 3px 6px;
+    border-radius: 5px;
+    position: relative;
+}
+.listComment .comment .comment-right .form-edit-comment {
+    display: none;
+    
+}
+.listComment .comment .comment-right .form-edit-comment .cancel-update {
+    cursor: pointer;
+}
+
+.listComment .comment .comment-right .form-edit-comment input[type="text"] {
+    width: 100%;
+    outline: none;
+    box-shadow: none;
+    border-radius: 15px;
+    border: none;
+    padding: 0 15px;
 }
 .listComment .comment .commentbody #commentcontent {
     margin: 0;
@@ -78,6 +102,30 @@
 .listComment .comment .commentbody #commentname {
     font-weight: bold;
     display: block;
+    position: relative;
+}
+.listComment .comment .commentbody #commentname .dropdown-action {
+    position: absolute;
+    right: -25px;
+    top: -3px;
+
+}
+.listComment .comment .commentbody #commentname .dropdown-action ul {
+    border: 0.3px solid rgb(100 147 247 / 28%);
+    background: rgb(24, 32, 49);
+}
+.listComment .comment .commentbody #commentname .dropdown-action ul li {
+    padding: 0 15px;
+}
+.listComment .comment .commentbody #commentname .dropdown-action button {
+    background: transparent;
+    border: none;
+    padding: 0;
+    outline: none;
+    box-shadow: none;
+}
+.listComment .comment .commentbody #commentname .dropdown-action button:after {
+    display: none;
 }
 .listComment .comment .commentbody #commentname #name {
     color: #5488c7;
@@ -88,6 +136,7 @@
 }
 .listComment .comment #commenttime {
     position: absolute;
-    right: 0;
-    top: 0;
+    right: -78px;
+    bottom: 0;
+    font-size: 12px;
 }
