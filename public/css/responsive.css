@@ -229,6 +229,10 @@
     }
     .banner__search form input {
     }
+
+    .listComment .comment #commenttime {
+        position: static;
+    }
     
 
 }
