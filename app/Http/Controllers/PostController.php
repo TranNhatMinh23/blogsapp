@@ -54,16 +54,7 @@ class PostController extends Controller
         $post->category()->attach($categories);
         return true;
     }
-    public function storePublish(StorePostRequest $request) {
 
-        return $request;
-        // $validated = $request->validated();
-        // $post = $this->postRepository->create($request->all());
-        // $categories = $request->categorySelect;
-        // $post->category()->attach($categories);
-        // return redirect(route('profile.index', Auth::user()->slug));
-         
-    }
     public function edit($slug) {
         $post = $this->postRepository->findBySlug($slug);
         $categories = $this->categoryRepository->getAll();
@@ -108,7 +99,10 @@ class PostController extends Controller
     }
 
     public function updateComment($id, Request $request){
-
+        $comment = Comment::find($id);
+        $comment->content =  $request->content;
+        $comment->save();
+        return $comment;
     }
 
     public function destroyComment($id) {

@@ -116,3 +116,6 @@
 .light .listComment .comment .commentbody #commentname .dropdown-action ul li a {
     color: black;
 }
+.light .listComment .comment .comment-action-other a {
+    color: black;
+}

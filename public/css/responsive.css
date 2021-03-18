@@ -233,6 +233,11 @@
     .listComment .comment #commenttime {
         position: static;
     }
+    .listComment .comment .commentbody #commentname .dropdown-action {
+        position: absolute;
+        right: 0;
+        top: -1px;
+    }
     
 
 }

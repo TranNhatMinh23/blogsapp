@@ -37,7 +37,6 @@ class Post extends Model
         // {{$post->created_at->diffForHumans()}}
         $time =  $this->attributes['created_at'];
         return Carbon::parse($time)->diffForHumans();
-
     }
 
 

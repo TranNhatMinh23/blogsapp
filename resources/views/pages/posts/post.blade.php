@@ -48,7 +48,7 @@
             </div>
             
             @guest
-            Phải đăng nhập mới được bình luận
+            <p id="statusAuth">Phải đăng nhập mới được bình luận</p>
             @else
             <div class="comments">
                 @if ($errors->any())
@@ -102,14 +102,21 @@
                                     </ul>
                                 </div>
                                 </div>
-                                <p id="commentcontent">{{ $comment->content }}</p>
-                                <div id="commenttime">30 phút trước</div>
+                                <p id="commentcontent" class="commentContent-{{ $comment->id }}">{{ $comment->content }}</p>
                             </div>
-                            <form class="form-edit-comment form-edit-{{ $comment->id }}">
-                                <input type="text" class="input-edit-{{ $comment->id }}"  name="" id="">
-                                <!-- <input type="submit" value="Cập nhật"> -->
+                            
+                            <form method="POST" action="{{ route('comment.update', $comment->id) }}" class="form-edit-comment form-edit-{{ $comment->id }}" data-id="{{ $comment->id }}">
+                                @csrf
+                                <input type="text" class="input-edit-{{ $comment->id }}"  name="content" id="comment-content-edit-{{ $comment->id }}">
+                                
+                                
                                 <span class="cancel-update" data-id="{{ $comment->id }}" >Cancel</span>
                             </form>
+                            <div class="comment-action-other">
+                                <a href="" id="comment-reply">Reply </a>
+                                <div id="commenttime">{{ $comment->getCreatedatAttribute($comment->created_at)->diffForHumans() }}</div>
+                            </div>
+                            
                         </div>
                         
                         
@@ -293,6 +300,30 @@
             let id = $(this).attr('data-id');
             $(".form-edit-"+id).hide();
             $(".commentbody-"+id).show();
+        })
+
+        // comment update
+        $(document).on('submit', ".form-edit-comment", function(e) {
+            e.preventDefault();
+            let id = $(this).attr("data-id");
+            let content = $("#comment-content-edit-"+id).val();
+            let _token = $("input[name=_token]").val();
+            let url = '{{ route("comment.update", 123456789) }}';
+            let urlUpdate = url.replace("123456789", id);
+            $.ajax({
+                url: urlUpdate,
+                type: "POST",
+                data: {
+                    content: content,
+                    _token : _token
+                },
+                success: function(data)
+                {
+                    $(".commentContent-"+id).html(data.content);
+                    $(".form-edit-"+id).hide();
+                    $(".commentbody-"+id).show();
+                }
+            })
         })
     </script>
 

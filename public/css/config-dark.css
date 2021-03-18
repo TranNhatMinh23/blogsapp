@@ -157,3 +157,9 @@
 .dark .listComment .comment .comment-right .form-edit-comment .cancel-update {
     color: #ccc;
 }
+.dark #statusAuth {
+    color: #ccc;
+}
+.dark pre {
+    color: #ccc;
+}

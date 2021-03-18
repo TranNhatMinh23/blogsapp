@@ -42,6 +42,8 @@ Route::post('/c', 'CategoryController@store')->name('category.store');
 
 Route::post('/comment', 'PostController@storeComment')->name('comment.store');
 Route::get('/comment/{comment}', 'PostController@destroyComment')->name('comment.destroy');
+Route::post('/comment/{comment}', 'PostController@updateComment')->name('comment.update');
+
 
 
 Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
