@@ -9,6 +9,7 @@ aside article .categories {
 aside article .categories a {
     font-size: 12px;
     background: transparent;
+    margin-bottom: 9px;
     margin-right: 5px;
     padding: 3px 15px;
     border-radius: 10px;
@@ -24,7 +25,7 @@ aside article {
     padding: 15px 0;
 }
 aside article:first-child {
-    padding: 0 0 15px 0;
+    padding: 0 0 6px 0;
 }
 aside article:last-child {
     border-bottom: none;

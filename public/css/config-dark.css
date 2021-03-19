@@ -163,3 +163,6 @@
 .dark pre {
     color: #ccc;
 }
+.dark #form-add-post label {
+    color: black;
+}

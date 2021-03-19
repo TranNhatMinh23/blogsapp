@@ -70,7 +70,11 @@
     height: 30px;
 }
 .listComment .comment .comment-right {
-    width: 100%;
+    /* width: 100%; */
+}
+.img_loading {
+    width: 20px;
+    margin-left: 10px;
 }
 
 .listComment .comment .commentbody {

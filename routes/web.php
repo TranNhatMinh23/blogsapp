@@ -16,8 +16,7 @@ Route::prefix('posts/')->group(function () {
     Route::get('/', 'PostController@index')->name('post.index');
     Route::get('/{slug}.html', 'PostController@show')->name('post.show');
     Route::get('/new', 'PostController@create')->name('post.create');
-    Route::get('/new', 'PostController@create')->name('post.create');
-    Route::post('/', 'PostController@store')->name('post.store');
+    Route::post('/new', 'PostController@store')->name('post.store');
 
     Route::post('/published', 'PostController@storePublish')->name('post.store.publish');
     
@@ -38,7 +37,7 @@ Route::get('/timepost/{post}', 'PostController@updateTimePost')->name('post.upda
 
 Route::get('/c', 'CategoryController@index')->name('category.index');
 Route::get('/c/{category}', 'CategoryController@show')->name('category.show');
-Route::post('/c', 'CategoryController@store')->name('category.store');
+Route::get('/c', 'CategoryController@store')->name('category.store');
 
 Route::post('/comment', 'PostController@storeComment')->name('comment.store');
 Route::get('/comment/{comment}', 'PostController@destroyComment')->name('comment.destroy');

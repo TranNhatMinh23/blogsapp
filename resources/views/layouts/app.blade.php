@@ -31,25 +31,35 @@
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
-
+    
+    <script src="{{ asset('js/jquery-3.5.1.min.js') }}" ></script>
     <script src="{{ asset('js/popper.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('js/jquery-3.5.1.min.js') }}" ></script>
+    
     
     <script src="{{ asset('js/moment.min.js') }}"></script>
-    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script src="{{ asset('js/tinymce.min.js') }}" referrerpolicy="origin"></script>
         
     <script src="{{ asset('js/configEditor.js') }}"></script>
     <script src="{{ asset('js/slugString.js') }}"></script>
+    <script src="{{ asset('js/toast.js') }}"></script>
 
 </head>
 <body>
     <div id="app" class="dark">
-    
+        
         @include('partials.header')
         <main class="py-4">
             <div class="container background">
-                @yield('content')
+    
+            <div role="alert" aria-live="assertive"  style="position: fixed;right: 10px;bottom: 10px;" aria-atomic="true" class="toast" data-autohide="false">
+                <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">&times;</button>
+                <div class="toast-body">
+                    Hello, world! This is a toast message.
+                </div>
+            </div>
+            
+            @yield('content')
             </div>
         </main>
     </div>

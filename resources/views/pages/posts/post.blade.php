@@ -67,7 +67,7 @@
                     </div>
                     <form id="formComment" action="{{ route('comment.store') }}" method="POST">
                         @csrf
-                        <input type="text" value="" placeholder="comment.." name="content" class="inputComment" id="content">
+                        <input type="text" value="" autocomplete="off" placeholder="comment.." name="content" class="inputComment" id="content">
                         <input type="hidden" value="" id="auth-info" auth-name="{{ Auth::user()->name }}" auth-avarta = "{{ Auth::user()->profile->avarta }}" >
                         <!-- <input type="submit" value="Bình luận"> -->
                     </form>
@@ -83,33 +83,33 @@
                         <div class="comment-right">
                             <div class="commentbody commentbody-{{ $comment->id }}">  
                                 <div id="commentname">
-                                <a href="{{ route('profile.index', $comment->users->slug) }}" id="name">{{ $comment->users->name }}</a>
-                                <div class="dropdown dropdown-action">
-                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                                        ...
-                                    </button>
-                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                        <li>
-                                            @can('update', $comment)
-                                            <a href="{{route('comment.destroy',$comment->id)}}" id="commentdel" data-id="{{ $comment->id }}">Xóa comment</a>
-                                            @endcan
-                                        </li>
-                                        <li>
-                                            @can('update', $comment)
-                                            <a href="" id="commentedit" data-id="{{ $comment->id }}">Chỉnh sửa comment</a>
-                                            @endcan
-                                        </li>
-                                    </ul>
-                                </div>
+                                    <a href="{{ route('profile.index', $comment->users->slug) }}" id="name">{{ $comment->users->name }}</a>
+                                    <div class="dropdown dropdown-action">
+                                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                            ...
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                            <li>
+                                                @if($comment->id > 0)
+                                                @can('update', $comment)
+                                                <a href="{{route('comment.destroy',$comment->id)}}" id="commentdel" data-id="{{ $comment->id }}">Xóa comment</a>
+                                                @endcan
+                                                @endif
+                                            </li>
+                                            <li>
+                                                @can('update', $comment)
+                                                <a href="" id="commentedit" data-id="{{ $comment->id }}">Chỉnh sửa comment</a>
+                                                @endcan
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
                                 <p id="commentcontent" class="commentContent-{{ $comment->id }}">{{ $comment->content }}</p>
                             </div>
                             
                             <form method="POST" action="{{ route('comment.update', $comment->id) }}" class="form-edit-comment form-edit-{{ $comment->id }}" data-id="{{ $comment->id }}">
                                 @csrf
-                                <input type="text" class="input-edit-{{ $comment->id }}"  name="content" id="comment-content-edit-{{ $comment->id }}">
-                                
-                                
+                                <input type="text" autocomplete="off" class="input-edit-{{ $comment->id }}"  name="content" id="comment-content-edit-{{ $comment->id }}">
                                 <span class="cancel-update" data-id="{{ $comment->id }}" >Cancel</span>
                             </form>
                             <div class="comment-action-other">
@@ -236,8 +236,18 @@
                     user_id: user,
                     _token : _token
                 },
+                beforeSend: function() {
+                    $(".countComment").append(`<img class="img_loading" src="{{ asset('/images/loading-buffering.gif') }}" alt="">`);
+                },
+                
                 success: function(data)
                 {
+                    let urlDel = "";
+                    
+                    if(data) {
+                        $(".img_loading").remove();
+                        urlDel = window.location.hostname + '/comment/'+ data.id;
+                    }
                     let str = `
                     @guest
                     @else
@@ -246,15 +256,39 @@
                         <a href="profile/{{Auth::user()->slug}}" class="commentimg">
                         <img src="`+ url_avarta +`" alt="">
                         </a>
-                        <div class="commentbody">
-                            <div id="commentname">
-                            <a href="profile/{{Auth::user()->slug}}" id="name">`+ name +`</a>
-                            <a href="comment/`+ data.id +`" id="commentdel" data-id="`+ data.id +`">Xóa comment</a>
+                        <div class="comment-right">
+                            <div class="commentbody commentbody-`+ data.id +`">
+                                <div id="commentname">
+                                    <a href="profile/{{Auth::user()->slug}}" id="name">`+ name +`</a>
+                                    <div class="dropdown dropdown-action">
+                                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                            ...
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                            <li>
+                                                <a href="`+ urlDel +`" id="commentdel" data-id="`+ data.id +`">Xóa comment</a>
+                                            </li>
+                                            <li>
+                                                <a href="" id="commentedit" data-id="`+ data.id +`">Chỉnh sửa comment</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <p id="commentcontent" class="commentContent-`+ data.id +`">`+ data.content + `</p>
                             </div>
-                            <p id="commentcontent">`+ data.content + `</p>
+
+                            <form method="POST" class="form-edit-comment form-edit-`+ data.id +`" data-id="`+ data.id +`">
+                                @csrf
+                                <input type="text" class="input-edit-`+ data.id +`"  name="content" id="comment-content-edit-`+ data.id +`">
+                                <span class="cancel-update" data-id="`+ data.id +`" >Cancel</span>
+                            </form>
+
+                            <div class="comment-action-other">
+                                <a href="" id="comment-reply">Reply </a>
+                                <div id="commenttime">1 giây trước</div>
+                            </div>
                         </div>
                         
-                        <div id="commenttime">5 phút trước</div>
                     </div>
                     @endguest
                     `;
@@ -265,17 +299,25 @@
             })
 
         })
+
+        //
         $(document).on('click', '#commentdel', function(e) {
             e.preventDefault();
             let id = $(this).attr('data-id');
             let url = "{{ route('comment.destroy', 33333) }}";
             let urlDel = url.replace('33333', id);
+            let countComment = $("#count").html();
 
             $.ajax({
                 url: urlDel,
                 type: "GET",
+                beforeSend: function() {
+                    $(".countComment").append(`<img class="img_loading" src="{{ asset('/images/loading-buffering.gif') }}" alt="">`);
+                },
                 success: function(data) {
                     $("#comment-"+id).remove();
+                    $(".img_loading").remove();
+                    $("#count").html(parseInt(countComment)-1);
                 }
 
             })
@@ -317,8 +359,12 @@
                     content: content,
                     _token : _token
                 },
+                beforeSend: function() {
+                    $(".countComment").append(`<img class="img_loading" src="{{ asset('/images/loading-buffering.gif') }}" alt="">`);
+                },
                 success: function(data)
                 {
+                    $(".img_loading").remove();
                     $(".commentContent-"+id).html(data.content);
                     $(".form-edit-"+id).hide();
                     $(".commentbody-"+id).show();

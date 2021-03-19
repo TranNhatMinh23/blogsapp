@@ -4,6 +4,11 @@ body {
     
 }
 
+input:focus, button:focus {
+    outline: none !important;
+    border-color: transparent !important;
+    box-shadow:  none !important;
+}
 .sticky-header {
     position: fixed;
     top: 0;
@@ -314,3 +319,44 @@ a {
     position: relative;
     top: -10px;
 }
+
+.toast button.close {
+    outline: none;
+    margin-right: 5px;
+}
+
+#form-add-post {
+    background: #f0f2f5;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.form-category {
+    position: relative;
+    
+}
+.form-category input[type="text"] {
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 1px 6px;
+    font-size: 14px;
+}
+.form-category #add-category {
+    background: transparent;
+    border: none;
+    font-size: 20px;
+    position: absolute;
+    right: 0;
+    top: -4px;   
+}
+.form-category #add-category:focus {
+    outline: none !important;   
+}
+
+.button-blog {
+    background: #20bbb3;
+    font-size: 14px;
+    border:none;
+}
+

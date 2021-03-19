@@ -49,10 +49,9 @@ class PostController extends Controller
     }
 
     public function store(Request $request) {
-        $post = $this->postRepository->create($request->all());
-        $categories = $request->categorySelect;
-        $post->category()->attach($categories);
-        return true;
+        $post = $this->postRepository->create($request->all()); 
+        $post->category()->attach($request->categorySelect);
+        return 'create success';
     }
 
     public function edit($slug) {
