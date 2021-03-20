@@ -122,7 +122,8 @@ $(document).on('click', '#savePost', function (e){
                 $(".toast-body").html("Đã cập nhật bài viết");
                 
             },
-            error: function(data) {
+            error: function(xhr) {
+                console.log(xhr.responseJSON.errors);
                 $('.toast').toast('show');
                 $(".toast-body").html("Xảy ra lỗi");
             }
