@@ -31,11 +31,11 @@
                     @endforeach
                 </div>
 
-                <!-- <div class="form-category">
+                <div class="form-category">
                     <input name="name" autocomplete="off" type="text" class="" id="name-category" placeholder="Chủ đề..">
                     <input name="slug" type="hidden" value="" id="slug-category">
                     <button id="add-category">+</button>
-                </div> -->
+                </div>
 
             </div>
              
@@ -83,54 +83,54 @@ function validateNew(title, content, category, publish) {
     }
     return true;
 }
-// $(document).on('click', '#savePost', function (e){
-//     e.preventDefault();
+$(document).on('click', '#savePost', function (e){
+    e.preventDefault();
     
-//     let arrCategory = [];
-//     $('input[type=checkbox]:checked').map(function(_, el) {
-//         arrCategory.push($(el).val());
-//     }).get();
+    let arrCategory = [];
+    $('input[type=checkbox]:checked').map(function(_, el) {
+        arrCategory.push($(el).val());
+    }).get();
 
-//     tinyMCE.triggerSave();
-//     let _token = $("input[name=_token]").val();
+    tinyMCE.triggerSave();
+    let _token = $("input[name=_token]").val();
     
-//     let title = $("#title-post").val();
-//     let slug = $("#slug-post").val();
-//     let content = $(".my-editor").val();
-//     let published;
-//     let user_id = "{{ Auth::id() }}";
+    let title = $("#title-post").val();
+    let slug = $("#slug-post").val();
+    let content = $(".my-editor").val();
+    let published;
+    let user_id = "{{ Auth::id() }}";
 
-//     let yes = $("#yesPublish");
-//     let no = $("#noPublish");
-//     yes.is(':checked') ? published=yes.val() : published=no.val();
+    let yes = $("#yesPublish");
+    let no = $("#noPublish");
+    yes.is(':checked') ? published=yes.val() : published=no.val();
 
-//     if(validateNew(title, content, arrCategory, published)) {
-//         $.ajax({
-//             type: "POST",
-//             url: "{{ route('post.update', $post->id) }}",
-//             data: {
-//                 _token: _token,
-//                 title: title,
-//                 slug: slug,
-//                 content: content,
-//                 published: published,
-//                 user_id: user_id,
-//                 categorySelect: arrCategory
-//             },
-//             success: function(data) {
-//                 console.log(data);
-//                 $('.toast').toast('show');
-//                 $(".toast-body").html("Đã cập nhật bài viết");
+    if(validateNew(title, content, arrCategory, published)) {
+        $.ajax({
+            type: "POST",
+            url: "{{ route('post.update', $post->id) }}",
+            data: {
+                _token: _token,
+                title: title,
+                slug: slug,
+                content: content,
+                published: published,
+                user_id: user_id,
+                categorySelect: arrCategory
+            },
+            success: function(data) {
+                console.log(data);
+                $('.toast').toast('show');
+                $(".toast-body").html("Đã cập nhật bài viết");
                 
-//             },
-//             error: function(xhr) {
-//                 console.log(xhr.responseJSON.errors);
-//                 $('.toast').toast('show');
-//                 $(".toast-body").html("Xảy ra lỗi");
-//             }
-//         })
-//     }
-// })
+            },
+            error: function(xhr) {
+                console.log(xhr.responseJSON.errors);
+                $('.toast').toast('show');
+                $(".toast-body").html("Xảy ra lỗi");
+            }
+        })
+    }
+})
 
 // del post
 $(document).on('click', "#delPost", function(e) {
