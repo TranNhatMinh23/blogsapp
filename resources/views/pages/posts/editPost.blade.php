@@ -42,10 +42,10 @@
             <div class="form-group">
                 <label for="">Trạng thái</label>
                 <br>
-                <input type="radio" @if($post->published == 1) {{'checked'}} @endif name="publish" value="1" id="yesPublish">
+                <input type="radio" @if($post->published == 1) {{'checked'}} @endif name="published" value="1" id="yesPublish">
                 <label for="yesPublish">Đăng bài viết</label>
                 <br>
-                <input type="radio" @if($post->published == 0) {{'checked'}} @endif name="publish" value="0" id="noPublish">
+                <input type="radio" @if($post->published == 0) {{'checked'}} @endif name="published" value="0" id="noPublish">
                 <label for="noPublish">Lưu bản nháp</label>
 
             </div>

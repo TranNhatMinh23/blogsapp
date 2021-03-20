@@ -11,6 +11,6 @@ class Categories extends Model
 
     public function post()
     {
-        return $this->belongsToMany('App\Models\Post', 'category_post', 'post_id', 'category_id');
+        return $this->belongsToMany('App\Models\Post', 'category_post', 'category_id', 'post_id');
     }
 }
