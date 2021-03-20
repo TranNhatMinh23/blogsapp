@@ -61,7 +61,6 @@ class PostController extends Controller
         return view('pages.posts.editPost', ['post' => $post, 'categories' => $categories]);
     }
     public function update($id, Request $request) {
-        
         $this->postRepository->update($id, $request->all());
         $post = $this->postRepository->find($id);
         
