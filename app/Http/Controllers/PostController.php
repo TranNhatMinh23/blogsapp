@@ -61,15 +61,21 @@ class PostController extends Controller
         return view('pages.posts.editPost', ['post' => $post, 'categories' => $categories]);
     }
     public function update($id, Request $request) {
+        
         $this->postRepository->update($id, $request->all());
         $post = $this->postRepository->find($id);
+        
         $post->category()->sync($request->categorySelect);
         $slug = $post->slug;
-        return redirect(route('post.show', $slug));
+        // return redirect(route('post.show', $slug));
+        return $slug;
     }
     public function destroy($id) {
-        $this->postRepository->delete($id);
-        return redirect()->back();
+        if($this->postRepository->delete((int)$id)) {
+            return 'Delete success';
+        };
+        // return redirect()->back();
+        
     }
 
     public function publishPost($id = null) {

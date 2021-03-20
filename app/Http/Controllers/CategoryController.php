@@ -22,9 +22,8 @@ class CategoryController extends Controller
         return view('pages.categories.category', ['posts' => $item->post, 'category' => $item]);
     }
     public function store(Request $request) {
-        return 'aaa';
-        // $item = $this->categoryRepository->create($request->all());
-        // return $item;
+        $item = $this->categoryRepository->create($request->all());
+        return $item;
     }
 
 

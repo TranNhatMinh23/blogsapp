@@ -9,7 +9,7 @@
     @else
     <h1 id="blog-category">{{ $category->name }}</h1>
     @foreach ($posts as $post)
-    <div class="blog">
+    <div class="blog blog-{{ $post->id }}">
         <a href="{{ route('profile.index', $post->user->slug ) }}" class="blog-img">
         <img src="{{ asset('images/'. $post->user->profile->avarta) }}" alt="">
         </a>
@@ -23,7 +23,7 @@
             <div class="author-delete-edit">
                 @can('update', $post)
                 <a href="{{ route('post.edit', $post->slug) }}">Chỉnh sửa bài viết</a>
-                <a href="{{ route('post.destroy', $post->id) }}">Xóa bài viết</a>
+                <a href="{{ route('post.destroy', $post->id) }}" class="delPost" data-id="{{ $post->id }}">Xóa bài viết</a>
                 @endcan
             </div>
             <!-- <div>{!! substr($post->content,0, 150) !!} ...</div> -->
@@ -62,6 +62,29 @@
     </div>
     @endforeach
     @endif
+
+    <script>
+        $(document).on('click', ".delPost", function(e) {
+            e.preventDefault();
+            let id = $(this).attr('data-id');
+            let url = "{{ route('post.destroy', 1132456) }}";
+            let urlDel = url.replace('1132456', id);
+            $.ajax({
+                type: "GET",
+                url: urlDel,
+                success: function(data) {
+                    console.log(data);
+                    $('.toast').toast('show');
+                    $(".toast-body").html("Đã xóa bài viết");
+                    $(".blog-"+id).remove();
+                },
+                error: function(data) {
+                    $('.toast').toast('show');
+                    $(".toast-body").html("Xảy ra lỗi");
+                }
+            })
+        })
+    </script>
     
 </div>
 @endsection

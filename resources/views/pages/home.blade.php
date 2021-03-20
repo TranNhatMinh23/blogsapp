@@ -5,12 +5,12 @@
 @section('content-master')
 
 <div class="blogs">   
-           
-    @if(count($posts) === 0)
+    
+    @if(count($posts) == 0)
         Hiện không có bài viết nào
     @else
     @foreach ($posts as $post)
-    <div class="blog">
+    <div class="blog blog-{{ $post->id }}">
         <a href="{{ route('profile.index', $post->user->slug) }}" class="blog-img">
         <img src="{{ asset('images/'. $post->user->profile->avarta) }}" alt="">
         </a>
@@ -24,7 +24,7 @@
             <div class="author-delete-edit">
                 @can('update', $post)
                 <a href="{{ route('post.edit', $post->slug) }}">Chỉnh sửa bài viết</a>
-                <a href="{{ route('post.destroy', $post->id) }}">Xóa bài viết</a>
+                <a href="{{ route('post.destroy', $post->id) }}" class="delPost" data-id="{{ $post->id }}">Xóa bài viết</a>
                 <a href="{{ route('post.unpublish', $post->id) }}" class="publishbtn">Unpuslish</a>
                 @endcan
             </div>
@@ -60,19 +60,33 @@
                 </div>
             </div>
         </div>
-        <script>
-            function replaceString(str) {
-                var from = ['hour ago'];
-                var to   = ['cách một giờ'];
-                for (var i=0, l=from.length ; i<l ; i++) {
-                    str = str.replace(from[i], to[i]);
-                }
-            return str;
-            }
-            console.log(replaceString('7 hours ago'))
-        </script>
+        
     </div>
     @endforeach   
     @endif
+
+    <script>
+        $(document).on('click', ".delPost", function(e) {
+            e.preventDefault();
+            let id = $(this).attr('data-id');
+            let url = "{{ route('post.destroy', 1111111111111111) }}";
+            let urlDel = url.replace('1111111111111111', id);
+
+            $.ajax({
+                type: "GET",
+                url: urlDel,
+                success: function(data) {
+                    console.log(data);
+                    $('.toast').toast('show');
+                    $(".toast-body").html("Đã xóa bài viết");
+                    $(".blog-"+id).remove();
+                },
+                error: function(data) {
+                    $('.toast').toast('show');
+                    $(".toast-body").html("Xảy ra lỗi");
+                }
+            })
+        })
+    </script>
 </div>
 @endsection

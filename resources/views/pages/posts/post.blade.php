@@ -40,7 +40,7 @@
                     </a>
                     <div class="creator-name">
                         <a href="{{ route('profile.index', $post->user->slug) }}">{{ $post->user->name }}</a>
-                        đăng 3 giờ trước
+                        đăng {{ $post->getCreated_atAttribute() }}
                     </div>
                 </div>
                 

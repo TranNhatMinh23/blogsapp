@@ -60,7 +60,7 @@ a {
     margin:  5px 0;
     padding: 0em 0.5em; */
 }
-.navbar-laravel .nav-item a span{
+.navbar-laravel .nav-item a >span{
     color: white;
 }
 .navbar-laravel .nav-item .nav-link {
@@ -86,8 +86,79 @@ a {
     margin-bottom: 0px;
     padding: 10px 0;
 }
+.navbar-laravel .header .dropdown button {
+    border-radius: 100%;
+    background: transparent;
+    /* border: none; */
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    padding: 0 0;
+    border: 1px solid #ccc;
+    position: relative;
+}
+.navbar-laravel .header .dropdown button:focus {
+    border: 1px solid #ccc !important;
+    background: transparent !important;
+}
+
+.navbar-laravel .header .dropdown button::after {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: red;
+    border: none;
+    border-radius: 100%;
+    /* content: '1'; */
+    font-size: 11px;
+    margin: 0;
+}
+
+.dropdown-menu {
+    box-shadow: 0px 0px 5px #aaa;
+    border: none;
+}
+.notification-item {
+    display: flex;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.notification-item:focus {
+    outline: none;
+}
+.notification-item:hover {
+    background: #eee;
+}
+.notification-item .dropdown-header {
+    background: black;
+}
+.dropdown-header h1 {
+    font-size: 17px;
+}
+.notification-item .img-user {
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    margin-right: 5px;
+}
+.notification-item .nofitication-right {
+    color: #aaa;
+}
+.notification-right p {
+    margin: 0;
+    color: #00000091;
+    
+}
+.notification-right p #name{
+    font-weight: bold;
+    color: #00000091;
+}
+.notification-right .notification-time {
+    font-size: 13px;
+}
+
 .navbar-laravel {
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 .navbar-laravel .header .iconMenu-res {
     display: none;
@@ -358,5 +429,10 @@ a {
     background: #20bbb3;
     font-size: 14px;
     border:none;
+}
+.button-blog-warning {
+    background: red;
+    color: #fff;
+    border: none;
 }
 

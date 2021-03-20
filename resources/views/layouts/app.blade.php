@@ -52,7 +52,7 @@
         <main class="py-4">
             <div class="container background">
     
-            <div role="alert" aria-live="assertive"  style="position: fixed;right: 10px;bottom: 10px;" aria-atomic="true" class="toast" data-autohide="false">
+            <div role="alert" aria-live="assertive"  style="z-index: 1111;position: fixed;right: 10px;bottom: 10px;" aria-atomic="true" class="toast" data-autohide="false">
                 <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">&times;</button>
                 <div class="toast-body">
                     Hello, world! This is a toast message.

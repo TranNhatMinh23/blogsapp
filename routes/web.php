@@ -22,7 +22,7 @@ Route::prefix('posts/')->group(function () {
     
     Route::get('/update/{post}.html', 'PostController@edit')->name('post.edit');
     Route::post('/update/{post}', 'PostController@update')->name('post.update');
-    Route::get('/delete/{post}.html', 'PostController@destroy')->name('post.destroy');
+    Route::get('/delete/{post}', 'PostController@destroy')->name('post.destroy');
     Route::get('/publish/{post}', 'PostController@publishPost')->name('post.publish');
     Route::get('/unpublish/{post}', 'PostController@unpublishPost')->name('post.unpublish');  
     
@@ -37,7 +37,7 @@ Route::get('/timepost/{post}', 'PostController@updateTimePost')->name('post.upda
 
 Route::get('/c', 'CategoryController@index')->name('category.index');
 Route::get('/c/{category}', 'CategoryController@show')->name('category.show');
-Route::get('/c', 'CategoryController@store')->name('category.store');
+Route::post('/c', 'CategoryController@store')->name('category.store');
 
 Route::post('/comment', 'PostController@storeComment')->name('comment.store');
 Route::get('/comment/{comment}', 'PostController@destroyComment')->name('comment.destroy');
